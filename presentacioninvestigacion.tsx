@@ -1,4 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
+// Componente de imagen optimizada con lazy loading
+const OptimizedImage = ({ src, alt, className = "", onLoad = () => {} }) => {
+  const [imageSrc, setImageSrc] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Usar la imagen directamente (Vite optimizará automáticamente)
+          setImageSrc(src);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '50px' });
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => {
+      if (imgRef.current) {
+        observer.unobserve(imgRef.current);
+      }
+    };
+  }, [src]);
+
+  return (
+    <img
+      ref={imgRef}
+      src={imageSrc || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23f3f4f6" width="400" height="300"/%3E%3C/svg%3E'}
+      alt={alt}
+      className={`${className} ${isLoading ? 'animate-pulse bg-slate-200' : ''}`}
+      onLoad={() => {
+        setIsLoading(false);
+        onLoad();
+      }}
+      onError={(e) => {
+        setIsLoading(false);
+        // Fallback a placeholder si la imagen falla
+        e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23e5e7eb" width="400" height="300"/%3E%3Ctext x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%239ca3af" font-size="16"%3EImagen no disponible%3C/text%3E%3C/svg%3E';
+      }}
+    />
+  );
+};
 
 // --- Datos del informe ---
 const reportData = {
@@ -8,10 +55,10 @@ const reportData = {
       id: 1,
       title: "Impacto generado",
       proposals: [
-        { id: 1, shortTitle: "Impacto 1", title: "La empresa enfrenta un alto riesgo de fallas catastróficas en presas de relaves húmedos, junto con un uso ineficiente y costoso del recurso hídrico.", fullTitle: "La empresa enfrenta un alto riesgo de fallas catastróficas en presas de relaves húmedos, junto con un uso ineficiente y costoso del recurso hídrico.", content: "Representación visual del riesgo en presas de relaves.", imageUrl: "https://via.placeholder.com/600x400?text=Imagen+Riesgo+Relaves" },
-        { id: 2, shortTitle: "Impacto 2", title: "Existe una fuerte dependencia de combustibles fósiles y energía intensiva en carbono, lo que incrementa costos operativos y exposición a riesgos climáticos y financieros.", fullTitle: "Existe una fuerte dependencia de combustibles fósiles y energía intensiva en carbono, lo que incrementa costos operativos y exposición a riesgos climáticos y financieros.", content: "Gráfico de dependencia de combustibles fósiles.", imageUrl: "https://via.placeholder.com/600x400?text=Imagen+Dependencia+Fosil" },
-        { id: 3, shortTitle: "Impacto 3", title: "La acumulación y postergación de pasivos ambientales mineros genera contingencias legales, sanciones económicas y deterioro de la imagen corporativa.", fullTitle: "La acumulación y postergación de pasivos ambientales mineros genera contingencias legales, sanciones económicas y deterioro de la imagen corporativa.", content: "Ilustración de pasivos ambientales.", imageUrl: "https://via.placeholder.com/600x400?text=Imagen+Pasivos+Ambientales" },
-        { id: 4, shortTitle: "Impacto 4", title: "El manejo inadecuado de aguas ácidas y lodos residuales provoca riesgos de contaminación, multas regulatorias y conflictos sociales que afectan la continuidad operativa.", fullTitle: "El manejo inadecuado de aguas ácidas y lodos residuales provoca riesgos de contaminación, multas regulatorias y conflictos sociales que afectan la continuidad operativa.", content: "Fotografía de manejo de aguas.", imageUrl: "https://via.placeholder.com/600x400?text=Imagen+Aguas+Acidas" },
+        { id: 1, shortTitle: "Impacto 1", title: "La empresa enfrenta un alto riesgo de fallas catastróficas en presas de relaves húmedos, junto con un uso ineficiente y costoso del recurso hídrico.", fullTitle: "La empresa enfrenta un alto riesgo de fallas catastróficas en presas de relaves húmedos, junto con un uso ineficiente y costoso del recurso hídrico.", content: "Representación visual del riesgo en presas de relaves.", imageUrl: "/images-optimized/impacto-1.jpg" },
+        { id: 2, shortTitle: "Impacto 2", title: "Existe una fuerte dependencia de combustibles fósiles y energía intensiva en carbono, lo que incrementa costos operativos y exposición a riesgos climáticos y financieros.", fullTitle: "Existe una fuerte dependencia de combustibles fósiles y energía intensiva en carbono, lo que incrementa costos operativos y exposición a riesgos climáticos y financieros.", content: "Gráfico de dependencia de combustibles fósiles.", imageUrl: "/images-optimized/impacto-2.jpg" },
+        { id: 3, shortTitle: "Impacto 3", title: "La acumulación y postergación de pasivos ambientales mineros genera contingencias legales, sanciones económicas y deterioro de la imagen corporativa.", fullTitle: "La acumulación y postergación de pasivos ambientales mineros genera contingencias legales, sanciones económicas y deterioro de la imagen corporativa.", content: "Ilustración de pasivos ambientales.", imageUrl: "/images-optimized/impacto-3.jpg" },
+        { id: 4, shortTitle: "Impacto 4", title: "El manejo inadecuado de aguas ácidas y lodos residuales provoca riesgos de contaminación, multas regulatorias y conflictos sociales que afectan la continuidad operativa.", fullTitle: "El manejo inadecuado de aguas ácidas y lodos residuales provoca riesgos de contaminación, multas regulatorias y conflictos sociales que afectan la continuidad operativa.", content: "Fotografía de manejo de aguas.", imageUrl: "/images-optimized/impacto-4.jpg" },
       ]
     },
     {

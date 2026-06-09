@@ -8,4 +8,19 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  build: {
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name].[hash][extname]'
+      }
+    }
+  },
+  server: {
+    open: true,
+    port: 5173,
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom']
+  }
 })
