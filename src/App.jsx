@@ -1517,83 +1517,9 @@ export default function App() {
             </button>
           </div>
 
-          {/* Simulated Dashboard UI */}
-          <div className="w-full bg-[#031024] rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden border border-slate-800">
-             <div className="absolute top-0 right-0 w-96 h-96 bg-[#EAAA00]/5 rounded-full blur-3xl"></div>
-             
-             <div className="flex justify-between items-center mb-8 relative z-10 border-b border-white/10 pb-4">
-               <div>
-                 <h3 className="text-white text-xl font-bold">Dashboard Ambiental en Tiempo Real</h3>
-                 <p className="text-slate-400 text-sm">Actualizado: hace 2 segundos | Operación: Orcopampa</p>
-               </div>
-               <div className="flex items-center gap-2">
-                 <span className="flex h-3 w-3 relative">
-                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                   <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                 </span>
-                 <span className="text-red-400 font-mono text-sm">Alerta Activa</span>
-               </div>
-             </div>
-
-             {/* Metrics Row */}
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 relative z-10">
-                {/* Metric 1 - Alert */}
-                <div className="bg-red-950/40 border border-red-500/30 rounded-2xl p-6 shadow-inner">
-                  <div className="flex justify-between items-start mb-2">
-                    <p className="text-red-200 text-sm font-medium">Fuga en Bombeo de Relaves</p>
-                    <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                  </div>
-                  <h4 className="text-3xl font-mono font-bold text-red-500 mb-1">-$4,250 <span className="text-lg">/ día</span></h4>
-                  <p className="text-red-400/80 text-xs">Pérdida patrimonial acumulada + Riesgo de multa OEFA</p>
-                </div>
-
-                {/* Metric 2 - Warning */}
-                <div className="bg-yellow-950/30 border border-yellow-500/30 rounded-2xl p-6 shadow-inner">
-                  <div className="flex justify-between items-start mb-2">
-                    <p className="text-yellow-200 text-sm font-medium">Pico Demanda Energética</p>
-                    <svg className="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                  </div>
-                  <h4 className="text-3xl font-mono font-bold text-yellow-500 mb-1">14.2 <span className="text-lg">MW</span></h4>
-                  <p className="text-yellow-400/80 text-xs">+12% sobre el límite de tarifa estándar</p>
-                </div>
-
-                {/* Metric 3 - Normal */}
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-inner">
-                  <div className="flex justify-between items-start mb-2">
-                    <p className="text-slate-300 text-sm font-medium">Agua Fresca Consumida</p>
-                    <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  </div>
-                  <h4 className="text-3xl font-mono font-bold text-white mb-1">845 <span className="text-lg">m³</span></h4>
-                  <p className="text-slate-400 text-xs">Dentro del rango óptimo operativo</p>
-                </div>
-             </div>
-          </div>
-
-          {/* Cards explicativas */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-            <div className="bg-white rounded-3xl p-8 shadow-md border-l-4 border-red-500 hover:-translate-y-1 transition-transform">
-              <div className="flex items-center gap-3 mb-4 text-[#002855]">
-                <div className="bg-red-50 p-2 rounded-lg text-red-500">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                </div>
-                <h4 className="font-bold text-xl leading-tight">Sensibilización Inmediata</h4>
-              </div>
-              <p className="text-base text-slate-600 leading-snug">
-                Cuando un operador observa que un desperfecto mecánico equivale a una <strong>pérdida patrimonial cuantificada en dólares</strong> y al incremento del riesgo de multas punitivas, el impacto es directo e instantáneo.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-3xl p-8 shadow-md border-l-4 border-[#002855] hover:-translate-y-1 transition-transform">
-              <div className="flex items-center gap-3 mb-4 text-[#002855]">
-                <div className="bg-[#EAAA00]/20 p-2 rounded-lg text-[#d49900]">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-                </div>
-                <h4 className="font-bold text-xl leading-tight">Psicología Conductual</h4>
-              </div>
-              <p className="text-base text-slate-600 leading-snug">
-                Demostrar el impacto monetario exacto del desempeño ambiental frente a los ojos del personal <strong>altera inmediatamente los incentivos del comportamiento</strong>, fomentando una cultura de prevención activa.
-              </p>
-            </div>
+          {/* Embedded Dashboard */}
+          <div className="w-full bg-white rounded-3xl shadow-2xl relative overflow-hidden border border-slate-200" style={{ height: '85vh' }}>
+             <iframe src="/dashboard.html" title="Dashboard Ambiental" className="w-full h-full border-0"></iframe>
           </div>
 
         </div>
