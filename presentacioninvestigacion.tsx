@@ -1080,7 +1080,6 @@ export default function App() {
             className="w-full mt-2 bg-[#EAAA00] hover:bg-[#d49900] text-[#002855] rounded-3xl py-8 px-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-100 flex flex-col items-center justify-center gap-2"
           >
             <span className="text-2xl font-bold uppercase tracking-wide">Importancia de la RSC</span>
-            <span className="text-sm font-medium opacity-80">Conoce nuestro compromiso con la sostenibilidad y la comunidad</span>
           </button>
         </div>
         <button 
@@ -1387,22 +1386,10 @@ export default function App() {
         <div className="w-full max-w-6xl flex flex-col gap-8">
           
           {/* Encabezado */}
-          <div className="bg-[#002855] rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden flex flex-col items-center text-center border border-slate-700">
-            <div className="absolute top-0 left-0 w-full h-3 bg-[#EAAA00]"></div>
-            <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#EAAA00]/10 rounded-full blur-3xl"></div>
-            <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-            
-            <svg className="w-14 h-14 text-[#EAAA00] mb-4 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 relative z-10 leading-tight">
+          <div className="text-center py-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#002855] leading-tight">
               {reportData.rscContent.title}
             </h2>
-            
-            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/10 relative z-10 shadow-inner">
-              <p className="text-base md:text-lg text-slate-200 leading-relaxed font-light">
-                {reportData.rscContent.intro}
-              </p>
-            </div>
           </div>
 
           {/* Grid de Módulos */}
