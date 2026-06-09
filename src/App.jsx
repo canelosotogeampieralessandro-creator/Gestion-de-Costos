@@ -1379,6 +1379,28 @@ export default function App() {
   // 4. Vista Detalle de Propuesta
   if (currentView === 'proposal-detail' && activeModule && activeProposal) {
     return (
+      <>
+      {/* Modal de Imagen a Pantalla Completa - fuera de todos los contenedores */}
+      {isFullscreen && activeProposal?.imageUrl && (
+        <div 
+          className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center p-4"
+          style={{ backdropFilter: 'blur(4px)' }}
+          onClick={() => setIsFullscreen(false)}
+        >
+          <button 
+            className="absolute top-6 right-6 text-white/70 hover:text-white p-2 transition-colors z-10"
+            onClick={() => setIsFullscreen(false)}
+          >
+            <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+          <img 
+            src={activeProposal.imageUrl} 
+            alt={activeProposal.title}
+            className="max-w-[95vw] max-h-[95vh] object-contain rounded-lg shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
       <div className="min-h-screen bg-slate-50 flex flex-col items-center p-4 md:p-8 font-sans">
         <div className="w-full max-w-7xl flex flex-col gap-6 mt-4 md:mt-6">
           <div className="flex flex-col md:flex-row gap-4 items-stretch justify-end">
@@ -1477,27 +1499,6 @@ export default function App() {
                 </>
               )}
 
-              {/* Modal de Imagen a Pantalla Completa */}
-              {isFullscreen && activeProposal?.imageUrl && (
-                <div 
-                  className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm"
-                  onClick={() => setIsFullscreen(false)}
-                >
-                  <button 
-                    className="absolute top-6 right-6 text-white/70 hover:text-white p-2 transition-colors"
-                    onClick={() => setIsFullscreen(false)}
-                  >
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                  </button>
-                  <img 
-                    src={activeProposal.imageUrl} 
-                    alt={activeProposal.title}
-                    className="max-w-[95vw] max-h-[95vh] object-contain rounded-lg shadow-2xl"
-                    onClick={(e) => e.stopPropagation()}
-                  />
-                </div>
-              )}
-
               <div className="mt-12 flex justify-end w-full">
                 <button 
                   onClick={goToCover}
@@ -1511,6 +1512,7 @@ export default function App() {
           </div>
         </div>
       </div>
+      </>
     );
   }
 
