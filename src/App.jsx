@@ -307,40 +307,36 @@ const reportData = {
           imageUrl: "https://lh3.googleusercontent.com/d/1tNcww3do6Ha9VnXoeqq2INtfc0W4V2v4",
           content: (
             <div className="flex flex-col gap-6 w-full text-left">
-              <p className="text-slate-700 text-lg leading-relaxed">
-                El Estado peruano, actuando a través del brazo ejecutor de la <strong>Dirección de Fiscalización y Aplicación de Incentivos (DFAI) del OEFA</strong>, ejerce su potestad sancionadora para penalizar económicamente a las empresas que intentan externalizar sus costos ambientales en detrimento del bienestar público, contraviniendo las disposiciones del Texto Único Ordenado de la Ley General de Minería y la normativa de protección ambiental.
+              <p className="text-slate-700 text-lg md:text-xl">
+                El Estado peruano ejerce su potestad sancionadora (a través del <strong>OEFA</strong>) para penalizar económicamente a las empresas que intentan externalizar sus costos ambientales en detrimento del bienestar público, contraviniendo la normativa de protección ambiental.
               </p>
-              
-              <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm my-2">
-                <h4 className="font-bold text-red-800 mb-2 flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                  Precedentes Sancionadores
-                </h4>
-                <p className="text-slate-700">
-                  Compañía de Minas Buenaventura ha sido multada formalmente tras acreditarse la infracción de mantener depósitos de desmonte temporales que carecían del diseño técnico respectivo y que operaban al margen de lo considerado en su Estudio de Impacto Ambiental aprobado, originando <strong>imposiciones punitivas iniciales de 10 UIT</strong>.
-                </p>
-              </div>
-
-              <div className="bg-white border border-slate-200 p-6 rounded-xl shadow-sm">
-                <p className="text-slate-700 mb-4">
-                  En instancias donde se constata una mayor severidad e inobservancia culposa, como la falta de ejecución del cierre técnico de pozas de lixiviación (omitiendo la instalación imperativa de geomembranas y la reposición de suelo orgánico para la revegetación), o la disposición caótica de lodos metalúrgicos con alto contenido de metales pesados, <strong>el OEFA inicia procesos administrativos sancionadores robustos</strong> que culminan en multas millonarias.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                  <div className="bg-slate-50 p-4 rounded-lg text-center border border-slate-100">
-                    <span className="block text-2xl mb-2">📉</span>
-                    <span className="text-sm font-semibold text-[#002855]">Impacto en utilidades</span>
-                    <p className="text-xs text-slate-500 mt-1">Merman el flujo de caja operativo libre directamente.</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                  <div className="flex items-center gap-3 mb-4 text-[#002855]">
+                    <div className="bg-[#EAAA00]/20 p-2 rounded-lg">
+                      <svg className="w-6 h-6 text-[#d49900]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
+                    </div>
+                    <h4 className="font-bold text-lg leading-tight">Impacto en Utilidades</h4>
                   </div>
-                  <div className="bg-slate-50 p-4 rounded-lg text-center border border-slate-100">
-                    <span className="block text-2xl mb-2">🏛️</span>
-                    <span className="text-sm font-semibold text-[#002855]">Deterioro reputacional</span>
-                    <p className="text-xs text-slate-500 mt-1">Afecta la calificación ante acreedores y aseguradoras.</p>
+                  <p className="text-sm md:text-base text-slate-600 leading-snug">Merman el flujo de caja operativo libre y las utilidades retenidas tras la imposición de multas millonarias por infracciones severas.</p>
+                </div>
+                <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                  <div className="flex items-center gap-3 mb-4 text-[#002855]">
+                    <div className="bg-[#EAAA00]/20 p-2 rounded-lg">
+                      <svg className="w-6 h-6 text-[#d49900]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h4 className="font-bold text-lg leading-tight">Deterioro Reputacional</h4>
                   </div>
-                  <div className="bg-slate-50 p-4 rounded-lg text-center border border-slate-100">
-                    <span className="block text-2xl mb-2">🛑</span>
-                    <span className="text-sm font-semibold text-[#002855]">Mecanismo Disuasorio</span>
-                    <p className="text-xs text-slate-500 mt-1">Disuade la contención artificial de gastos de mitigación ambiental.</p>
+                  <p className="text-sm md:text-base text-slate-600 leading-snug">Afecta drásticamente la calificación ante acreedores financieros y aseguradoras, limitando y encareciendo el acceso a crédito.</p>
+                </div>
+                <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                  <div className="flex items-center gap-3 mb-4 text-[#002855]">
+                    <div className="bg-[#EAAA00]/20 p-2 rounded-lg">
+                      <svg className="w-6 h-6 text-[#d49900]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    </div>
+                    <h4 className="font-bold text-lg leading-tight">Mecanismo Disuasorio</h4>
                   </div>
+                  <p className="text-sm md:text-base text-slate-600 leading-snug">Disuade la contención artificial de gastos operativos (OpEx) que debieron destinarse preventivamente al control ambiental.</p>
                 </div>
               </div>
             </div>
@@ -355,43 +351,36 @@ const reportData = {
           imageUrl: "https://lh3.googleusercontent.com/d/12KYGYMdZasZavUPwg7qaQDBkuSc4J1Zo",
           content: (
             <div className="flex flex-col gap-6 w-full text-left">
-              <p className="text-slate-700 text-lg leading-relaxed">
-                La sanción financiera más devastadora impuesta por el entorno operativo no proviene de los expedientes administrativos del regulador estatal, sino de la <strong>acción directa de los actores sociales en el territorio</strong>. Cuando una corporación minera rehúye asumir los costos necesarios para evitar la degradación paulatina de su entorno ecológico, las comunidades campesinas y poblaciones originarias reaccionan en defensa de sus medios de subsistencia.
+              <p className="text-slate-700 text-lg md:text-xl">
+                La sanción financiera más devastadora no proviene del regulador, sino de la <strong>acción directa de los actores sociales</strong>. Las movilizaciones y bloqueos territoriales precipitan crisis que fuerzan la paralización temporal de las operaciones extractivas.
               </p>
-
-              <div className="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-xl shadow-sm my-2">
-                <h4 className="font-bold text-orange-800 mb-2 flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path></svg>
-                  La Fenomenología de Buenaventura
-                </h4>
-                <p className="text-slate-700 text-sm">
-                  Las movilizaciones, exigencias de indemnizaciones por pasivos históricos acumulados desde 1959 en sectores como "La Calera" y "Lontojoya", y el bloqueo físico sostenido de las rutas de suministro logístico hacia los campamentos de Julcani y Orcopampa, precipitaron un estado de crisis que forzó a la alta dirección a ordenar <strong>paralizaciones temporales de las operaciones</strong> de extracción y procesamiento mineral.
-                </p>
-              </div>
-
-              <div className="bg-[#002855] text-white p-6 rounded-xl shadow-md mt-2">
-                <h4 className="text-[#EAAA00] font-bold text-lg mb-3">El Pasivo Contingente Más Letal: El Lucro Cesante</h4>
-                <p className="text-slate-300 text-sm mb-4 leading-relaxed">
-                  Desde la fría óptica de la contabilidad gerencial, la suspensión forzada de actividades productivas representa el pasivo más destructivo. Durante estas crisis, la unidad minera continúa devengando costos fijos masivos e ineludibles, mientras que la generación de ingresos colapsa drásticamente a cero.
-                </p>
-                <ul className="space-y-2 text-sm text-slate-200">
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-400 mt-1">✖</span>
-                    <span>Mantenimiento de infraestructura crítica para evitar el colapso de las labores.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-400 mt-1">✖</span>
-                    <span>Bombeo continuo de aguas de mina y salarios íntegros del personal esencial.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-400 mt-1">✖</span>
-                    <span>El peso inexorable de la depreciación de activos fijos inmovilizados.</span>
-                  </li>
-                </ul>
-                <div className="mt-5 p-4 bg-white/10 rounded-lg border border-white/20">
-                  <p className="text-sm font-semibold text-white">
-                    Este "lucro cesante" destruye valor presente neto (VPN) para el accionista a una velocidad y escala infinitamente mayor que cualquier presupuesto proactivo destinado a la prevención socioambiental.
-                  </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                  <div className="flex items-center gap-3 mb-4 text-[#002855]">
+                    <div className="bg-[#EAAA00]/20 p-2 rounded-lg">
+                      <svg className="w-6 h-6 text-[#d49900]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h4 className="font-bold text-lg leading-tight">Costos Fijos Ineludibles</h4>
+                  </div>
+                  <p className="text-sm md:text-base text-slate-600 leading-snug">La unidad minera continúa devengando costos masivos (mantenimiento, bombeo continuo de aguas, salarios) durante la paralización.</p>
+                </div>
+                <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                  <div className="flex items-center gap-3 mb-4 text-[#002855]">
+                    <div className="bg-[#EAAA00]/20 p-2 rounded-lg">
+                      <svg className="w-6 h-6 text-[#d49900]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
+                    </div>
+                    <h4 className="font-bold text-lg leading-tight">Colapso de Ingresos</h4>
+                  </div>
+                  <p className="text-sm md:text-base text-slate-600 leading-snug">La generación de ingresos por venta de concentrados y doré colapsa drásticamente a cero tras la suspensión de actividades operativas.</p>
+                </div>
+                <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                  <div className="flex items-center gap-3 mb-4 text-[#002855]">
+                    <div className="bg-[#EAAA00]/20 p-2 rounded-lg">
+                      <svg className="w-6 h-6 text-[#d49900]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h4 className="font-bold text-lg leading-tight">Destrucción de VPN</h4>
+                  </div>
+                  <p className="text-sm md:text-base text-slate-600 leading-snug">Este "lucro cesante" destruye valor presente neto para el accionista a una velocidad infinitamente mayor que el presupuesto de prevención.</p>
                 </div>
               </div>
             </div>
