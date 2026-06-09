@@ -785,7 +785,7 @@ const reportData = {
                 </div>
               </div>
               <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200">
-                <h4 className="font-bold text-[#002855] mb-3">🏦} Capital Fresco</h4>
+                <h4 className="font-bold text-[#002855] mb-3">💎 Capital Fresco</h4>
                 <div className="space-y-1 text-sm">
                   <p className="text-slate-700"><strong>Tasas competitivas</strong></p>
                   <p className="text-slate-600">Acceso a financiamiento innovador y subsidiado</p>
