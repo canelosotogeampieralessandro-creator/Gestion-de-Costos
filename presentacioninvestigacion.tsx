@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 // Componente de imagen optimizada con lazy loading
 const OptimizedImage = ({ src, alt, className = "", onLoad = () => {} }) => {
@@ -33,6 +33,8 @@ const OptimizedImage = ({ src, alt, className = "", onLoad = () => {} }) => {
       ref={imgRef}
       src={imageSrc || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23f3f4f6" width="400" height="300"/%3E%3C/svg%3E'}
       alt={alt}
+      loading="lazy"
+      decoding="async"
       className={`${className} ${isLoading ? 'animate-pulse bg-slate-200' : ''}`}
       onLoad={() => {
         setIsLoading(false);
@@ -55,10 +57,10 @@ const reportData = {
       id: 1,
       title: "Impacto generado",
       proposals: [
-        { id: 1, shortTitle: "Impacto 1", title: "La empresa enfrenta un alto riesgo de fallas catastrÃ³ficas en presas de relaves hÃºmedos, junto con un uso ineficiente y costoso del recurso hÃ­drico.", fullTitle: "La empresa enfrenta un alto riesgo de fallas catastrÃ³ficas en presas de relaves hÃºmedos, junto con un uso ineficiente y costoso del recurso hÃ­drico.", content: "RepresentaciÃ³n visual del riesgo en presas de relaves.", imageUrl: "/images-optimized/impacto-1.jpg" },
-        { id: 2, shortTitle: "Impacto 2", title: "Existe una fuerte dependencia de combustibles fÃ³siles y energÃ­a intensiva en carbono, lo que incrementa costos operativos y exposiciÃ³n a riesgos climÃ¡ticos y financieros.", fullTitle: "Existe una fuerte dependencia de combustibles fÃ³siles y energÃ­a intensiva en carbono, lo que incrementa costos operativos y exposiciÃ³n a riesgos climÃ¡ticos y financieros.", content: "GrÃ¡fico de dependencia de combustibles fÃ³siles.", imageUrl: "/images-optimized/impacto-2.jpg" },
-        { id: 3, shortTitle: "Impacto 3", title: "La acumulaciÃ³n y postergaciÃ³n de pasivos ambientales mineros genera contingencias legales, sanciones econÃ³micas y deterioro de la imagen corporativa.", fullTitle: "La acumulaciÃ³n y postergaciÃ³n de pasivos ambientales mineros genera contingencias legales, sanciones econÃ³micas y deterioro de la imagen corporativa.", content: "IlustraciÃ³n de pasivos ambientales.", imageUrl: "/images-optimized/impacto-3.jpg" },
-        { id: 4, shortTitle: "Impacto 4", title: "El manejo inadecuado de aguas Ã¡cidas y lodos residuales provoca riesgos de contaminaciÃ³n, multas regulatorias y conflictos sociales que afectan la continuidad operativa.", fullTitle: "El manejo inadecuado de aguas Ã¡cidas y lodos residuales provoca riesgos de contaminaciÃ³n, multas regulatorias y conflictos sociales que afectan la continuidad operativa.", content: "FotografÃ­a de manejo de aguas.", imageUrl: "/images-optimized/impacto-4.jpg" },
+        { id: 1, shortTitle: "Impacto 1", title: "La empresa enfrenta un alto riesgo de fallas catastrÃ³ficas en presas de relaves hÃºmedos, junto con un uso ineficiente y costoso del recurso hÃ­drico.", fullTitle: "La empresa enfrenta un alto riesgo de fallas catastrÃ³ficas en presas de relaves hÃºmedos, junto con un uso ineficiente y costoso del recurso hÃ­drico.", content: "RepresentaciÃ³n visual del riesgo en presas de relaves.", imageUrl: "https://lh3.googleusercontent.com/d/1qsaVKfBVzUHTpynbusriDU4eDv1agH7M" },
+        { id: 2, shortTitle: "Impacto 2", title: "Existe una fuerte dependencia de combustibles fÃ³siles y energÃ­a intensiva en carbono, lo que incrementa costos operativos y exposiciÃ³n a riesgos climÃ¡ticos y financieros.", fullTitle: "Existe una fuerte dependencia de combustibles fÃ³siles y energÃ­a intensiva en carbono, lo que incrementa costos operativos y exposiciÃ³n a riesgos climÃ¡ticos y financieros.", content: "GrÃ¡fico de dependencia de combustibles fÃ³siles.", imageUrl: "https://lh3.googleusercontent.com/d/1DXtKvm_v5IjUcH-ZVWGQhJ1Yk73xr4jY" },
+        { id: 3, shortTitle: "Impacto 3", title: "La acumulaciÃ³n y postergaciÃ³n de pasivos ambientales mineros genera contingencias legales, sanciones econÃ³micas y deterioro de la imagen corporativa.", fullTitle: "La acumulaciÃ³n y postergaciÃ³n de pasivos ambientales mineros genera contingencias legales, sanciones econÃ³micas y deterioro de la imagen corporativa.", content: "IlustraciÃ³n de pasivos ambientales.", imageUrl: "https://lh3.googleusercontent.com/d/1CDKIS2ccHeoKLR11M1j8jG4YMwmLB2PT" },
+        { id: 4, shortTitle: "Impacto 4", title: "El manejo inadecuado de aguas Ã¡cidas y lodos residuales provoca riesgos de contaminaciÃ³n, multas regulatorias y conflictos sociales que afectan la continuidad operativa.", fullTitle: "El manejo inadecuado de aguas Ã¡cidas y lodos residuales provoca riesgos de contaminaciÃ³n, multas regulatorias y conflictos sociales que afectan la continuidad operativa.", content: "FotografÃ­a de manejo de aguas.", imageUrl: "https://lh3.googleusercontent.com/d/1qvZbAmsRFNBnjZuQhLmUw4zkzOIbNHoV" },
       ]
     },
     {
