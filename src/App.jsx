@@ -1477,6 +1477,27 @@ export default function App() {
                 </>
               )}
 
+              {/* Modal de Imagen a Pantalla Completa */}
+              {isFullscreen && activeProposal?.imageUrl && (
+                <div 
+                  className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm"
+                  onClick={() => setIsFullscreen(false)}
+                >
+                  <button 
+                    className="absolute top-6 right-6 text-white/70 hover:text-white p-2 transition-colors"
+                    onClick={() => setIsFullscreen(false)}
+                  >
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                  </button>
+                  <img 
+                    src={activeProposal.imageUrl} 
+                    alt={activeProposal.title}
+                    className="max-w-[95vw] max-h-[95vh] object-contain rounded-lg shadow-2xl"
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                </div>
+              )}
+
               <div className="mt-12 flex justify-end w-full">
                 <button 
                   onClick={goToCover}
