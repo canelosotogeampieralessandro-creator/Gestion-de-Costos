@@ -1324,7 +1324,10 @@ export default function App() {
               ) : (
                 <>
                   <h2 className="text-2xl font-bold text-[#002855] mb-8 border-b-2 border-slate-100 pb-4 w-full">
-                    {activeModule.id === 4 ? "Objetivo del acuerdo" : "Desarrollo de la propuesta"}
+                    {activeModule.id === 4 ? "Objetivo del acuerdo" : 
+                     activeProposal?.subCategoryId === 'sanciones' ? "Desarrollo de la sanción" : 
+                     activeProposal?.subCategoryId === 'incentivos' ? "Desarrollo del incentivo" : 
+                     "Desarrollo de la propuesta"}
                   </h2>
                   <div className="flex-1 flex items-start text-lg md:text-xl text-slate-600 leading-relaxed w-full">
                     {activeProposal.content}
@@ -1335,7 +1338,10 @@ export default function App() {
                       className="bg-[#002855]/5 hover:bg-[#002855]/10 text-[#002855] py-3 px-6 rounded-xl font-semibold transition-colors flex items-center gap-2 border border-[#002855]/20"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                      {activeModule.id === 4 ? "Ver imagen del acuerdo" : "Ver imagen de la propuesta"}
+                      {activeModule.id === 4 ? "Ver imagen del acuerdo" : 
+                       activeProposal?.subCategoryId === 'sanciones' ? "Ver imagen de la sanción" : 
+                       activeProposal?.subCategoryId === 'incentivos' ? "Ver imagen del incentivo" : 
+                       "Ver imagen de la propuesta"}
                     </button>
                   </div>
                 </>
