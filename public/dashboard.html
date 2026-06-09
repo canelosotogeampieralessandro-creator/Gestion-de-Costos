@@ -1,314 +1,568 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Ambiental Operativo - Orcopampa</title>
 <style>
-:root {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --color-background-primary: #ffffff;
-  --color-background-secondary: #f8fafc;
-  --color-border-tertiary: #e2e8f0;
-  --color-text-primary: #002855;
-  --color-text-secondary: #475569;
-  --border-radius-md: 0.75rem;
-  --border-radius-lg: 1rem;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body { background-color: #f1f5f9; }
-.root{padding:1rem 0;display:flex;flex-direction:column;gap:1rem;font-family:var(--font-sans);max-width:1200px;margin:0 auto}
-.hdr{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem}
-.hdr-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.hdr-title{font-size:14px;font-weight:500;color:var(--color-text-primary)}
-.hdr-sub{font-size:11px;color:var(--color-text-secondary);display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
-.kpi-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:0.75rem}
-.kpi{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.65rem 0.9rem}
-.kpi-lbl{font-size:10px;color:var(--color-text-secondary);margin-bottom:3px}
-.kpi-val{font-size:18px;font-weight:500}
-.kpi-sub{font-size:10px;margin-top:1px}
-.badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:3px 9px;border-radius:var(--border-radius-md)}
-.bw{background:#FAEEDA;color:#633806}.br{background:#FCEBEB;color:#791F1F}.bg{background:#EAF3DE;color:#27500A}.bb{background:#E6F1FB;color:#0C447C}
-.mod{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
-.mod-hdr{padding:0.65rem 1.1rem;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;justify-content:space-between;gap:8px}
-.mod-title{font-size:12px;font-weight:500;color:var(--color-text-primary);display:flex;align-items:center;gap:6px}
-.mod-body{padding:0.9rem 1.1rem;display:flex;flex-direction:column;gap:0.7rem}
-.ctrl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem}
-.ctrl-block{display:flex;flex-direction:column;gap:4px}
-.ctrl-lbl{font-size:11px;color:var(--color-text-secondary);display:flex;justify-content:space-between;align-items:center}
-.ctrl-val{font-size:12px;font-weight:500;color:var(--color-text-primary)}
-input[type=range]{width:100%}
-.result-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.result-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:0.6rem 0.8rem}
-.rc-lbl{font-size:10px;color:var(--color-text-secondary);margin-bottom:3px}
-.rc-val{font-size:15px;font-weight:500}
-.alert-box{border-radius:var(--border-radius-md);padding:0.55rem 0.8rem;font-size:11px;display:flex;gap:7px;align-items:flex-start}
-.aw{background:#FAEEDA;color:#633806;border-left:3px solid #EF9F27;border-radius:0}
-.ar{background:#FCEBEB;color:#791F1F;border-left:3px solid #E24B4A;border-radius:0}
-.ag{background:#EAF3DE;color:#27500A;border-left:3px solid #639922;border-radius:0}
-.gauge-wrap{display:flex;align-items:center;gap:8px}
-.gauge-lbl{font-size:11px;color:var(--color-text-secondary);min-width:80px}
-.gauge-bar{flex:1;height:7px;background:var(--color-background-secondary);border-radius:4px;overflow:hidden}
-.gauge-fill{height:100%;border-radius:4px;transition:width 0.3s}
-.gauge-pct{font-size:11px;font-weight:500;min-width:34px;text-align:right}
-.sep{font-size:10px;color:var(--color-text-secondary);font-weight:500;text-transform:uppercase;letter-spacing:0.05em;border-bottom:0.5px solid var(--color-border-tertiary);padding-bottom:4px;margin-bottom:2px}
-.pulse{width:7px;height:7px;border-radius:50%;background:#E24B4A;display:inline-block;animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.3)}}
-.energy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.ec{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:0.6rem 0.8rem}
-.balance-bar{height:28px;border-radius:var(--border-radius-md);display:flex;align-items:center;padding:0 10px;font-size:12px;font-weight:500;transition:all 0.3s}
-.summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.risk-pill{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:500;padding:2px 8px;border-radius:var(--border-radius-md)}
+  :root {
+    --font-serif: 'Georgia', 'Times New Roman', serif;
+    --font-sans: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --color-bg: #f4f5f8;
+    --color-card: #ffffff;
+    --color-text-main: #222222;
+    --color-text-mut: #666666;
+    --color-border: #e0e0e0;
+    
+    --c-red: #D33F3F;
+    --c-red-bg: #FDF2F2;
+    --c-green: #5B9A27;
+    --c-green-bg: #F0F7EA;
+    --c-orange: #E68A2E;
+    --c-blue: #1F61A9;
+    
+    --radius: 12px;
+    --shadow: 0 4px 12px rgba(0,0,0,0.04);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-main);
+    font-family: var(--font-sans);
+    padding: 24px;
+    font-size: 16px; /* Base font size increased */
+  }
+
+  /* Grid Layout based on wireframe */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .full-width {
+    grid-column: 1 / -1;
+  }
+
+  .card {
+    background: var(--color-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .alert-card {
+    background-color: var(--c-red-bg);
+    border-color: #F5C6C6;
+  }
+
+  /* Header Styles */
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+  }
+
+  .main-title {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    color: var(--color-text-main);
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    color: var(--color-text-mut);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .live-dot {
+    width: 10px; height: 10px;
+    background-color: var(--c-red);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(211, 63, 63, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(211, 63, 63, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(211, 63, 63, 0); }
+  }
+
+  /* KPIs Globales */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .kpi-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .kpi-label { font-size: 15px; color: var(--color-text-main); }
+  .kpi-value { font-family: var(--font-serif); font-size: 34px; font-weight: normal; }
+  .kpi-sub { font-size: 14px; color: var(--color-text-mut); }
+
+  /* Module Styles */
+  .mod-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 12px;
+  }
+
+  .mod-title {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    color: var(--color-text-main);
+  }
+
+  .badge {
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    background: #eee;
+  }
+  .badge.warning { background: #FFF4E5; color: #B35F00; }
+  .badge.danger { background: #FDE8E8; color: #C81E1E; }
+  .badge.success { background: #DEF7EC; color: #03543F; }
+
+  /* Controls & Layout inside modules */
+  .mod-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 30px;
+  }
+  
+  .mod-content.stacked {
+    grid-template-columns: 1fr;
+  }
+
+  .controls-area {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: #fafafa;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+  }
+
+  .alert-card .controls-area {
+    background: rgba(255,255,255,0.5);
+    border-color: #F5C6C6;
+  }
+
+  .ctrl-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ctrl-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+  }
+
+  .ctrl-val { font-weight: 600; font-size: 16px; }
+
+  input[type=range] { width: 100%; height: 6px; accent-color: var(--c-blue); }
+
+  /* Charts & Bars (CSS based to match images) */
+  .charts-area { display: flex; flex-direction: column; gap: 20px; justify-content: center; }
+  
+  .bar-chart-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .bar-label { width: 140px; font-size: 14px; font-weight: 500; }
+  .bar-track { flex: 1; height: 16px; background: #eee; border-radius: 8px; position: relative; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 8px; transition: width 0.3s ease; }
+  .bar-value { width: 50px; text-align: right; font-size: 15px; font-weight: 600; }
+
+  /* Text colors */
+  .txt-red { color: var(--c-red); }
+  .txt-green { color: var(--c-green); }
+  .txt-orange { color: var(--c-orange); }
+
+  /* Summary Table */
+  .summary-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .summary-table th { text-align: left; font-size: 13px; color: var(--color-text-mut); padding-bottom: 10px; border-bottom: 1px solid #eee; text-transform: uppercase; letter-spacing: 0.5px;}
+  .summary-table td { padding: 12px 0; font-size: 16px; border-bottom: 1px solid #eee; }
+  
+  /* Alert Box */
+  .alert-box {
+    padding: 16px;
+    border-left: 4px solid var(--c-red);
+    background: #fff;
+    font-size: 15px;
+    color: var(--c-red);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-top: 10px;
+  }
+
+  /* Large Financial Bars for bottom */
+  .fin-bars-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-items: end;
+    height: 180px;
+    padding-top: 20px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 10px;
+  }
+  .fin-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    position: relative;
+  }
+  .fin-bar-wrap {
+    height: 120px; /* Max height representation */
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .fin-bar {
+    width: 60%;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.3s ease;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .fin-bar.negative { background-color: #EF7777; border-radius: 0 0 4px 4px; align-self: flex-start;}
+  .fin-bar.positive { background-color: var(--c-green); }
+  
+  .fin-label { margin-top: 15px; font-size: 14px; color: var(--color-text-mut); text-align: center; }
+
 </style>
+</head>
+<body>
 
-<div class="root">
-<h2 style="position:absolute;left:-9999px">Dashboard ambiental interactivo Orcopampa — modifica sliders para recalcular impactos financieros</h2>
+<div class="dashboard-grid">
 
-<div class="hdr">
-  <div class="hdr-top">
-    <div>
-      <div class="hdr-title"><i class="ti ti-building-factory-2" aria-hidden="true" style="font-size:15px;vertical-align:-2px;margin-right:5px"></i>Contabilidad ambiental operativa — Turno mañana · Orcopampa</div>
-      <div class="hdr-sub">
-        <span><i class="ti ti-calendar" aria-hidden="true" style="font-size:12px;vertical-align:-1px;margin-right:2px"></i>03/06/2026 · 10:15 AM</span>
-        <span><span class="pulse"></span> Simulación en tiempo real</span>
+  <!-- HEADER -->
+  <div class="card full-width">
+    <div class="header-top">
+      <div>
+        <h1 class="main-title">Contabilidad Ambiental Operativa — Turno Mañana</h1>
+        <div class="subtitle">
+          <span>Orcopampa</span>
+          <span>03/06/2026 &nbsp;&nbsp; 10:15 AM</span>
+          <span><span class="live-dot"></span> Datos en tiempo real</span>
+        </div>
+      </div>
+      <div>
+        <div class="badge warning" id="main-status">Alerta Amarilla &nbsp;|&nbsp; Desviación: -$2,220</div>
       </div>
     </div>
-    <div id="estado-badge" class="badge bw"><i class="ti ti-alert-triangle" aria-hidden="true"></i> <span id="estado-txt">Alerta amarilla</span></div>
+    
+    <div class="kpi-row">
+      <div class="kpi-box">
+        <span class="kpi-label">Gasto hídrico</span>
+        <span class="kpi-value txt-red" id="kpi-hidrico">-$1,370</span>
+        <span class="kpi-sub txt-red" id="kpi-hidrico-sub">No planificado / turno</span>
+      </div>
+      <div class="kpi-box">
+        <span class="kpi-label">Costo energético total</span>
+        <span class="kpi-value" id="kpi-energia">$18,400</span>
+        <span class="kpi-sub txt-orange" id="kpi-energia-sub">+12% sobre línea base</span>
+      </div>
+      <div class="kpi-box">
+        <span class="kpi-label">Ahorro relaves</span>
+        <span class="kpi-value txt-green" id="kpi-relaves">+$2,950</span>
+        <span class="kpi-sub txt-green" id="kpi-relaves-sub">Neto logística turno</span>
+      </div>
+      <div class="kpi-box">
+        <span class="kpi-label">Riesgo OEFA</span>
+        <span class="kpi-value txt-red" id="kpi-oefa">10 UIT</span>
+        <span class="kpi-sub txt-red" id="kpi-oefa-sub">Multa contingente</span>
+      </div>
+    </div>
   </div>
-  <div class="kpi-row">
-    <div class="kpi"><div class="kpi-lbl"><i class="ti ti-droplet" aria-hidden="true" style="font-size:11px"></i> Balance hídrico</div><div class="kpi-val" id="kpi-hidrico" style="color:#A32D2D">-$1,370</div><div class="kpi-sub" id="kpi-hidrico-sub" style="color:#A32D2D">No planificado</div></div>
-    <div class="kpi"><div class="kpi-lbl"><i class="ti ti-bolt" aria-hidden="true" style="font-size:11px"></i> Costo energético</div><div class="kpi-val" id="kpi-energia" style="color:var(--color-text-primary)">$18,400</div><div class="kpi-sub" id="kpi-energia-sub" style="color:#854F0B">+12% línea base</div></div>
-    <div class="kpi"><div class="kpi-lbl"><i class="ti ti-truck" aria-hidden="true" style="font-size:11px"></i> Balance relaves</div><div class="kpi-val" id="kpi-relaves" style="color:#3B6D11">+$2,950</div><div class="kpi-sub" id="kpi-relaves-sub" style="color:#3B6D11">Ahorro neto</div></div>
-    <div class="kpi"><div class="kpi-lbl"><i class="ti ti-report-money" aria-hidden="true" style="font-size:11px"></i> Balance turno</div><div class="kpi-val" id="kpi-total" style="color:#A32D2D">-$2,220</div><div class="kpi-sub" id="kpi-total-sub" style="color:#A32D2D">Desviación presupuesto</div></div>
-  </div>
-</div>
 
-<div class="mod">
-  <div class="mod-hdr">
-    <div class="mod-title"><i class="ti ti-droplets" aria-hidden="true" style="font-size:15px;color:#185FA5"></i>Módulo 1 — Eficiencia hídrica y recirculación</div>
-    <div id="badge-hidrico" class="badge bw">Alerta operativa</div>
-  </div>
-  <div class="mod-body">
-    <div class="sep">Ajusta los parámetros operativos</div>
-    <div class="ctrl-grid">
-      <div class="ctrl-block">
-        <div class="ctrl-lbl">Tasa de recirculación <span class="ctrl-val" id="lbl-recirc">82%</span></div>
-        <input type="range" id="sl-recirc" min="60" max="100" step="1" value="82">
-        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--color-text-secondary)"><span>60%</span><span style="color:#3B6D11">Objetivo: 88%</span><span>100%</span></div>
-      </div>
-      <div class="ctrl-block">
-        <div class="ctrl-lbl">Volumen extraído (m³/h) <span class="ctrl-val" id="lbl-volumen">450</span></div>
-        <input type="range" id="sl-volumen" min="350" max="600" step="5" value="450">
-        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--color-text-secondary)"><span>350</span><span style="color:#3B6D11">Objetivo: 400</span><span>600</span></div>
-      </div>
+  <!-- MODULO 1: Hídrico -->
+  <div class="card">
+    <div class="mod-title-row">
+      <h2 class="mod-title">Módulo 1 — Eficiencia hídrica y recirculación</h2>
+      <div class="badge warning" id="badge-hidrico">Alerta operativa</div>
     </div>
-    <div>
-      <div class="gauge-wrap" style="margin-bottom:5px">
-        <div class="gauge-lbl">Recirculación</div>
-        <div class="gauge-bar"><div class="gauge-fill" id="g-recirc" style="width:82%;background:#EF9F27"></div></div>
-        <div class="gauge-pct" id="gv-recirc" style="color:#854F0B">82%</div>
-      </div>
-      <div class="gauge-wrap">
-        <div class="gauge-lbl">Objetivo (88%)</div>
-        <div class="gauge-bar"><div class="gauge-fill" style="width:88%;background:#639922"></div></div>
-        <div class="gauge-pct" style="color:#3B6D11">88%</div>
-      </div>
-    </div>
-    <div class="result-row">
-      <div class="result-card">
-        <div class="rc-lbl">Costo bombeo extra</div>
-        <div class="rc-val" id="res-bombeo" style="color:#A32D2D">-$1,250</div>
-      </div>
-      <div class="result-card">
-        <div class="rc-lbl">Tarifa retributiva ANA</div>
-        <div class="rc-val" id="res-ana" style="color:#A32D2D">-$120</div>
-      </div>
-      <div class="result-card">
-        <div class="rc-lbl">Total hídrico</div>
-        <div class="rc-val" id="res-hidrico-total" style="color:#A32D2D">-$1,370</div>
-      </div>
-    </div>
-    <div id="alert-hidrico" class="alert-box aw"><i class="ti ti-alert-triangle" aria-hidden="true" style="font-size:13px;flex-shrink:0;margin-top:1px"></i><div id="alert-hidrico-txt">Espesador #2 con baja recirculación. Sobrecosto proyectado: <strong>$4,110</strong> al cierre del día.</div></div>
-  </div>
-</div>
-
-<div class="mod">
-  <div class="mod-hdr">
-    <div class="mod-title"><i class="ti ti-bolt" aria-hidden="true" style="font-size:15px;color:#3B6D11"></i>Módulo 2 — Descarbonización y consumo energético</div>
-    <div id="badge-energia" class="badge bw">Diésel +12% línea base</div>
-  </div>
-  <div class="mod-body">
-    <div class="sep">Ajusta las fuentes de energía</div>
-    <div class="ctrl-grid">
-      <div class="ctrl-block">
-        <div class="ctrl-lbl">Energía hidroeléctrica (MWh) <span class="ctrl-val" id="lbl-hidro">120</span></div>
-        <input type="range" id="sl-hidro" min="50" max="200" step="5" value="120">
-      </div>
-      <div class="ctrl-block">
-        <div class="ctrl-lbl">Red nacional (MWh) <span class="ctrl-val" id="lbl-red">35</span></div>
-        <input type="range" id="sl-red" min="0" max="100" step="5" value="35">
-      </div>
-      <div class="ctrl-block">
-        <div class="ctrl-lbl">Consumo diésel (galones) <span class="ctrl-val" id="lbl-diesel">2,500</span></div>
-        <input type="range" id="sl-diesel" min="1000" max="4000" step="100" value="2500">
-        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--color-text-secondary)"><span>1,000</span><span style="color:#3B6D11">Base: 2,232</span><span>4,000</span></div>
-      </div>
-      <div class="ctrl-block" style="justify-content:flex-end">
-        <div class="energy-grid" style="margin-top:auto">
-          <div class="ec" style="border-left:2px solid #639922;border-radius:0">
-            <div style="font-size:10px;color:#27500A">Huanza</div>
-            <div style="font-size:13px;font-weight:500;color:var(--color-text-primary)" id="costo-hidro">$4,800</div>
-            <div style="font-size:10px;color:#27500A">0 tCO₂e</div>
+    
+    <div class="mod-content">
+      <div class="controls-area">
+        <div class="ctrl-group">
+          <div class="ctrl-header">
+            <span>Tasa recirculación</span>
+            <span class="ctrl-val" id="lbl-recirc">82%</span>
           </div>
-          <div class="ec" style="border-left:2px solid #EF9F27;border-radius:0">
-            <div style="font-size:10px;color:#633806">Red</div>
-            <div style="font-size:13px;font-weight:500;color:var(--color-text-primary)" id="costo-red">$2,100</div>
-            <div style="font-size:10px;color:#633806" id="co2-red">14.5 tCO₂e</div>
+          <input type="range" id="sl-recirc" min="60" max="100" step="1" value="82">
+          <span style="font-size: 12px; color: var(--color-text-mut)">Objetivo corporativo: 88%</span>
+        </div>
+        <div class="ctrl-group" style="margin-top:15px">
+          <div class="ctrl-header">
+            <span>Volumen extraído (m³/h)</span>
+            <span class="ctrl-val" id="lbl-volumen">450</span>
           </div>
-          <div class="ec" style="border-left:2px solid #E24B4A;border-radius:0">
-            <div style="font-size:10px;color:#791F1F">Diésel</div>
-            <div style="font-size:13px;font-weight:500;color:var(--color-text-primary)" id="costo-diesel">$11,500</div>
-            <div style="font-size:10px;color:#791F1F" id="co2-diesel">25.2 tCO₂e</div>
-          </div>
+          <input type="range" id="sl-volumen" min="350" max="600" step="5" value="450">
+        </div>
+      </div>
+
+      <div class="charts-area">
+        <span style="font-size: 13px; font-weight: bold; color: var(--color-text-mut); letter-spacing: 0.5px;">INDICADORES DE RECIRCULACIÓN</span>
+        <div class="bar-chart-row">
+          <span class="bar-label">Recirculación real</span>
+          <div class="bar-track"><div class="bar-fill" id="bar-recirc" style="width: 82%; background: var(--c-orange);"></div></div>
+          <span class="bar-value txt-orange" id="val-recirc">82%</span>
+        </div>
+        <div class="bar-chart-row">
+          <span class="bar-label">Objetivo</span>
+          <div class="bar-track"><div class="bar-fill" style="width: 88%; background: var(--c-green);"></div></div>
+          <span class="bar-value txt-green">88%</span>
+        </div>
+        
+        <table class="summary-table">
+          <tr><th>Métrica</th><th>Valor</th><th>Impacto ($)</th></tr>
+          <tr>
+            <td>Tasa recirculación</td>
+            <td id="tbl-recirc">82%</td>
+            <td id="res-bombeo" class="txt-red">-$1,250</td>
+          </tr>
+          <tr>
+            <td>Volumen extraído</td>
+            <td id="tbl-vol">450 m³/h</td>
+            <td id="res-ana" class="txt-red">-$120</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+    <div class="alert-box" id="alert-hidrico">
+      Sistema: Bajo nivel de recirculación detectado. Reparar fuga para evitar sobrecosto de <strong id="proj-hidrico">$4,110</strong> al final del día.
+    </div>
+  </div>
+
+  <!-- MODULO 2: Energía -->
+  <div class="card">
+    <div class="mod-title-row">
+      <h2 class="mod-title">Módulo 2 — Descarbonización y consumo energético</h2>
+      <div class="badge warning" id="badge-energia">Diésel +12% línea base</div>
+    </div>
+    
+    <div class="mod-content stacked">
+      <!-- Top Stats -->
+      <div style="display:flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+        <div>
+          <div style="font-size:14px">Hidroeléctrica Huanza</div>
+          <div class="kpi-value" id="lbl-hidro" style="font-size:28px">120 MWh</div>
+          <div style="font-size:13px; color:var(--c-green)">Renovable 100%</div>
+        </div>
+        <div style="border-left: 1px solid #eee; padding-left: 20px;">
+          <div style="font-size:14px">Red Nacional</div>
+          <div class="kpi-value" id="lbl-red" style="font-size:28px">35 MWh</div>
+          <div style="font-size:13px; color:var(--c-orange)" id="co2-red">14.5 tCO₂e</div>
+        </div>
+        <div style="border-left: 1px solid #eee; padding-left: 20px;">
+          <div style="font-size:14px">Maquinaria diésel</div>
+          <div class="kpi-value txt-red" id="lbl-diesel" style="font-size:28px">2,500 Gal</div>
+          <div style="font-size:13px; color:var(--c-red)" id="co2-diesel">25.2 tCO₂e</div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div style="display:flex; gap: 20px;">
+        <div class="ctrl-group" style="flex:1">
+          <div class="ctrl-header"><span>Hidro</span></div>
+          <input type="range" id="sl-hidro" min="50" max="200" step="5" value="120">
+        </div>
+        <div class="ctrl-group" style="flex:1">
+          <div class="ctrl-header"><span>Red</span></div>
+          <input type="range" id="sl-red" min="0" max="100" step="5" value="35">
+        </div>
+        <div class="ctrl-group" style="flex:1">
+          <div class="ctrl-header"><span>Diésel</span></div>
+          <input type="range" id="sl-diesel" min="1000" max="4000" step="100" value="2500">
+        </div>
+      </div>
+
+      <!-- Charts Area -->
+      <div class="charts-area" style="margin-top: 10px;">
+        <span style="font-size: 13px; font-weight: bold; color: var(--color-text-mut); letter-spacing: 0.5px;">DISTRIBUCIÓN DE EMISIONES (TCO₂E)</span>
+        <div class="bar-chart-row">
+          <span class="bar-label">Diésel</span>
+          <div class="bar-track"><div class="bar-fill" id="bar-co2-diesel" style="width: 70%; background: var(--c-red);"></div></div>
+          <span class="bar-value txt-red" id="val-co2-diesel">25.2</span>
+        </div>
+        <div class="bar-chart-row">
+          <span class="bar-label">Red Nacional</span>
+          <div class="bar-track"><div class="bar-fill" id="bar-co2-red" style="width: 40%; background: var(--c-orange);"></div></div>
+          <span class="bar-value txt-orange" id="val-co2-red">14.5</span>
         </div>
       </div>
     </div>
-    <div>
-      <div class="gauge-wrap" style="margin-bottom:5px">
-        <div class="gauge-lbl">Emisiones totales</div>
-        <div class="gauge-bar"><div class="gauge-fill" id="g-co2" style="width:70%;background:#E24B4A"></div></div>
-        <div class="gauge-pct" id="gv-co2" style="color:#A32D2D">39.7 t</div>
-      </div>
-      <div class="gauge-wrap">
-        <div class="gauge-lbl">Línea base (35.4 t)</div>
-        <div class="gauge-bar"><div class="gauge-fill" style="width:62%;background:#888780"></div></div>
-        <div class="gauge-pct" style="color:#5F5E5A">35.4 t</div>
-      </div>
-    </div>
-    <div id="alert-energia" class="alert-box aw"><i class="ti ti-alert-triangle" aria-hidden="true" style="font-size:13px;flex-shrink:0;margin-top:1px"></i><div id="alert-energia-txt">Consumo diésel supera línea base en <strong>12%</strong>. Penalidad interna por emisiones no presupuestadas.</div></div>
   </div>
-</div>
 
-<div class="mod">
-  <div class="mod-hdr">
-    <div class="mod-title"><i class="ti ti-layers-intersect" aria-hidden="true" style="font-size:15px;color:#534AB7"></i>Módulo 3 — Gestión de relaves filtrados y lodos</div>
-    <div id="badge-relaves" class="badge bg">Ahorro neto: +$2,950</div>
-  </div>
-  <div class="mod-body">
-    <div class="sep">Ajusta los parámetros de proceso</div>
-    <div class="ctrl-grid">
-      <div class="ctrl-block">
-        <div class="ctrl-lbl">Relaves Planta A (t/h) <span class="ctrl-val" id="lbl-relaves-a">850</span></div>
-        <input type="range" id="sl-relaves-a" min="500" max="1200" step="10" value="850">
-      </div>
-      <div class="ctrl-block">
-        <div class="ctrl-lbl">Humedad relaves A (%) <span class="ctrl-val" id="lbl-hum-a">14%</span></div>
-        <input type="range" id="sl-hum-a" min="8" max="25" step="1" value="14">
-        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--color-text-secondary)"><span>8%</span><span style="color:#3B6D11">Óptimo: ≤16%</span><span>25%</span></div>
-      </div>
-      <div class="ctrl-block">
-        <div class="ctrl-lbl">Lodos decantador (t/h) <span class="ctrl-val" id="lbl-lodos">120</span></div>
-        <input type="range" id="sl-lodos" min="50" max="250" step="5" value="120">
-      </div>
-      <div class="ctrl-block">
-        <div class="ctrl-lbl">Humedad lodos (%) <span class="ctrl-val" id="lbl-hum-l">22%</span></div>
-        <input type="range" id="sl-hum-l" min="12" max="35" step="1" value="22">
-        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--color-text-secondary)"><span>12%</span><span style="color:#3B6D11">Umbral: 17%</span><span>35%</span></div>
-      </div>
+  <!-- MODULO 3: Relaves -->
+  <div class="card">
+    <div class="mod-title-row">
+      <h2 class="mod-title">Módulo 3 — Gestión de relaves filtrados y lodos</h2>
+      <div class="badge success" id="badge-relaves">Ahorro neto: +$2,950</div>
     </div>
-    <div>
-      <div class="gauge-wrap" style="margin-bottom:5px">
-        <div class="gauge-lbl">Humedad relaves A</div>
-        <div class="gauge-bar"><div class="gauge-fill" id="g-hum-a" style="width:56%;background:#639922"></div></div>
-        <div class="gauge-pct" id="gv-hum-a" style="color:#3B6D11">14%</div>
+    
+    <div class="mod-content">
+      <div class="controls-area">
+        <div class="ctrl-group">
+          <div class="ctrl-header"><span>Relaves Planta A</span><span class="ctrl-val" id="lbl-relaves-a">850 t</span></div>
+          <input type="range" id="sl-relaves-a" min="500" max="1200" step="10" value="850">
+        </div>
+        <div class="ctrl-group">
+          <div class="ctrl-header"><span>Humedad Relaves A</span><span class="ctrl-val" id="lbl-hum-a">14%</span></div>
+          <input type="range" id="sl-hum-a" min="8" max="25" step="1" value="14">
+        </div>
+        <div class="ctrl-group" style="margin-top:15px">
+          <div class="ctrl-header"><span>Lodos Decantador</span><span class="ctrl-val" id="lbl-lodos">120 t</span></div>
+          <input type="range" id="sl-lodos" min="50" max="250" step="5" value="120">
+        </div>
+        <div class="ctrl-group">
+          <div class="ctrl-header"><span>Humedad Lodos</span><span class="ctrl-val" id="lbl-hum-l">22%</span></div>
+          <input type="range" id="sl-hum-l" min="12" max="35" step="1" value="22">
+        </div>
       </div>
-      <div class="gauge-wrap">
-        <div class="gauge-lbl">Humedad lodos</div>
-        <div class="gauge-bar"><div class="gauge-fill" id="g-hum-l" style="width:88%;background:#EF9F27"></div></div>
-        <div class="gauge-pct" id="gv-hum-l" style="color:#854F0B">22%</div>
-      </div>
-    </div>
-    <div class="result-row">
-      <div class="result-card">
-        <div class="rc-lbl">Ahorro logístico relaves</div>
-        <div class="rc-val" id="res-ah-relaves" style="color:#3B6D11">+$3,400</div>
-      </div>
-      <div class="result-card">
-        <div class="rc-lbl">Sobrecosto lodos</div>
-        <div class="rc-val" id="res-sob-lodos" style="color:#A32D2D">-$450</div>
-      </div>
-      <div class="result-card">
-        <div class="rc-lbl">Balance neto relaves</div>
-        <div class="rc-val" id="res-relaves-total" style="color:#3B6D11">+$2,950</div>
-      </div>
-    </div>
-    <div id="alert-relaves" class="alert-box ag"><i class="ti ti-check" aria-hidden="true" style="font-size:13px;flex-shrink:0;margin-top:1px"></i><div id="alert-relaves-txt">Relaves Planta A en rango óptimo. Balance logístico positivo para el turno.</div></div>
-  </div>
-</div>
 
-<div class="mod" style="border-color:#F09595">
-  <div class="mod-hdr" style="background:#FCEBEB">
-    <div class="mod-title" style="color:#791F1F"><i class="ti ti-shield-exclamation" aria-hidden="true" style="font-size:15px;color:#E24B4A"></i>Módulo 4 — Alertas regulatorias OEFA</div>
-    <div id="badge-oefa" class="badge br"><span class="pulse"></span> Acción inmediata</div>
-  </div>
-  <div class="mod-body">
-    <div class="sep">Ajusta los parámetros de campo</div>
-    <div class="ctrl-grid">
-      <div class="ctrl-block">
-        <div class="ctrl-lbl">pH efluente principal <span class="ctrl-val" id="lbl-ph">6.2</span></div>
-        <input type="range" id="sl-ph" min="5.5" max="9.0" step="0.1" value="6.2">
-        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--color-text-secondary)"><span>5.5</span><span style="color:#3B6D11">Límite mín: 6.0 | Óptimo: 7.0</span><span>9.0</span></div>
-      </div>
-      <div class="ctrl-block">
-        <div class="ctrl-lbl">Desmonte acumulado (t) <span class="ctrl-val" id="lbl-desmonte">1,200</span></div>
-        <input type="range" id="sl-desmonte" min="0" max="3000" step="50" value="1200">
-        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--color-text-secondary)"><span>0 t</span><span style="color:#3B6D11">Zona EIA únicamente</span><span>3,000 t</span></div>
-      </div>
-    </div>
-    <div class="summary-grid">
-      <div class="result-card">
-        <div class="rc-lbl">pH actual</div>
-        <div class="rc-val" id="res-ph" style="color:#854F0B">6.2</div>
-        <div style="font-size:10px;color:var(--color-text-secondary);margin-top:2px">Mínimo: 6.0</div>
-        <div style="margin-top:6px"><div class="gauge-bar"><div class="gauge-fill" id="g-ph" style="width:44%;background:#EF9F27"></div></div></div>
-      </div>
-      <div class="result-card" id="card-desmonte" style="border-color:#F09595">
-        <div class="rc-lbl">Desmonte acumulado</div>
-        <div class="rc-val" id="res-desmonte" style="color:#A32D2D">1,200 t</div>
-        <div id="riesgo-oefa-lbl" style="font-size:10px;margin-top:3px"><span class="risk-pill" style="background:#FCEBEB;color:#791F1F"><i class="ti ti-alert-triangle" aria-hidden="true" style="font-size:10px"></i> Multa: ≥10 UIT (S/51,500)</span></div>
+      <div class="charts-area">
+        <span style="font-size: 13px; font-weight: bold; color: var(--color-text-mut); letter-spacing: 0.5px;">COMPARATIVA DE HUMEDAD VS UMBRAL</span>
+        
+        <div class="bar-chart-row">
+          <span class="bar-label">Relaves Planta A</span>
+          <div class="bar-track"><div class="bar-fill" id="bar-hum-a" style="width: 50%; background: var(--c-green);"></div></div>
+          <span class="bar-value txt-green" id="val-hum-a">14%</span>
+        </div>
+        <div class="bar-chart-row">
+          <span class="bar-label">Lodos Centrifugos</span>
+          <div class="bar-track"><div class="bar-fill" id="bar-hum-l" style="width: 80%; background: var(--c-orange);"></div></div>
+          <span class="bar-value txt-orange" id="val-hum-l">22%</span>
+        </div>
+        <div class="bar-chart-row">
+          <span class="bar-label">Umbral aceptable</span>
+          <div class="bar-track"><div class="bar-fill" style="width: 60%; background: #bbbbbb;"></div></div>
+          <span class="bar-value" style="color:#888">17%</span>
+        </div>
+        
+        <table class="summary-table" style="margin-top:15px">
+          <tr><th>Componente</th><th>Impacto</th></tr>
+          <tr><td>Relaves filtrados</td><td id="res-ah-relaves" class="txt-green">+$3,400</td></tr>
+          <tr><td>Lodos decantador</td><td id="res-sob-lodos" class="txt-red">-$450</td></tr>
+        </table>
       </div>
     </div>
-    <div id="alert-oefa" class="alert-box ar"><i class="ti ti-drone" aria-hidden="true" style="font-size:13px;flex-shrink:0;margin-top:1px"></i><div id="alert-oefa-txt">Material de desmonte detectado fuera del área EIA. Remoción inmediata requerida. Multa contingente OEFA: ≥10 UIT.</div></div>
   </div>
-</div>
 
-<div class="mod">
-  <div class="mod-hdr">
-    <div class="mod-title"><i class="ti ti-report-money" aria-hidden="true" style="font-size:15px;color:#185FA5"></i>Resumen financiero del turno — balance acumulado</div>
-    <div id="badge-balance" class="badge bw">Balance: -$2,220</div>
-  </div>
-  <div class="mod-body">
-    <div style="display:flex;flex-direction:column;gap:6px">
-      <div>
-        <div style="font-size:10px;color:var(--color-text-secondary);margin-bottom:3px">Balance hídrico</div>
-        <div class="balance-bar" id="bar-hidrico" style="background:#FCEBEB;color:#791F1F;width:60%">-$1,370</div>
+  <!-- MODULO 4: OEFA -->
+  <div class="card alert-card">
+    <div class="mod-title-row" style="border-bottom-color: #F5C6C6;">
+      <h2 class="mod-title txt-red">Módulo 4 — Alertas tempranas de riesgo (OEFA)</h2>
+      <div class="badge danger" id="badge-oefa">Acción inmediata</div>
+    </div>
+    
+    <div class="mod-content">
+      <div class="controls-area">
+        <div class="ctrl-group">
+          <div class="ctrl-header"><span>pH en efluente</span><span class="ctrl-val txt-orange" id="lbl-ph">6.2</span></div>
+          <input type="range" id="sl-ph" min="5.5" max="9.0" step="0.1" value="6.2">
+          <span style="font-size: 13px; color: var(--color-text-main)">Mínimo exigido: 6.0</span>
+        </div>
+        <div class="ctrl-group" style="margin-top:25px">
+          <div class="ctrl-header"><span>Desmonte (t)</span><span class="ctrl-val txt-red" id="lbl-desmonte">1,200</span></div>
+          <input type="range" id="sl-desmonte" min="0" max="3000" step="50" value="1200">
+          <span style="font-size: 13px; color: var(--color-text-main)">Condición: solo áreas EIA</span>
+        </div>
       </div>
-      <div>
-        <div style="font-size:10px;color:var(--color-text-secondary);margin-bottom:3px">Sobrecosto energético diésel</div>
-        <div class="balance-bar" id="bar-energia" style="background:#FCEBEB;color:#791F1F;width:50%">-$2,000</div>
-      </div>
-      <div>
-        <div style="font-size:10px;color:var(--color-text-secondary);margin-bottom:3px">Ahorro relaves</div>
-        <div class="balance-bar" id="bar-relaves" style="background:#EAF3DE;color:#27500A;width:40%">+$2,950</div>
-      </div>
-      <div style="border-top:0.5px solid var(--color-border-tertiary);padding-top:8px">
-        <div style="font-size:10px;color:var(--color-text-secondary);margin-bottom:3px">Balance total del turno</div>
-        <div class="balance-bar" id="bar-total" style="width:50%">-$2,220</div>
+
+      <div class="charts-area">
+        <div style="margin-bottom: 10px;">
+           <div style="font-size: 24px; font-family: var(--font-serif); margin-bottom: 5px;" id="res-ph" class="txt-orange">6.2 pH</div>
+           <div class="bar-track" style="height: 8px;"><div class="bar-fill" id="bar-ph" style="width: 40%; background: var(--c-orange);"></div></div>
+           <div style="display:flex; justify-content: space-between; font-size: 13px; margin-top: 5px;">
+              <span>6.0 (límite)</span><span>7.0 (óptimo)</span>
+           </div>
+        </div>
+        
+        <div style="background: #FCE8E8; padding: 15px; border-radius: 8px; border: 1px solid #F5C6C6;">
+           <div style="font-size: 15px; font-weight: bold; color: var(--c-red); margin-bottom: 8px;">Riesgo contingente: <span id="res-multa">≥10 UIT (S/ 51,500+)</span></div>
+           <div style="font-size: 14px; color: var(--color-text-main);" id="alert-oefa-txt">
+             Material de desmonte detectado en zona fuera del EIA. Se requiere inicio inmediato de remoción de tierras.
+           </div>
+        </div>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:4px">
-      <div class="kpi"><div class="kpi-lbl">Impacto hídrico</div><div class="kpi-val" id="sum-hidrico" style="color:#A32D2D">-$1,370</div></div>
-      <div class="kpi"><div class="kpi-lbl">Impacto energético</div><div class="kpi-val" id="sum-energia" style="color:#A32D2D">-$2,000</div></div>
-      <div class="kpi"><div class="kpi-lbl">Impacto relaves</div><div class="kpi-val" id="sum-relaves" style="color:#3B6D11">+$2,950</div></div>
-    </div>
-    <button onclick="sendPrompt('Analiza el balance financiero actual del turno en el dashboard de Orcopampa y sugiere las 3 acciones correctivas más urgentes para reducir desviaciones')" style="width:100%;margin-top:4px;font-size:12px">Analizar y obtener recomendaciones operativas ↗</button>
   </div>
-</div>
+
+  <!-- RESUMEN -->
+  <div class="card full-width">
+    <div class="mod-title-row">
+      <h2 class="mod-title">Resumen financiero del turno</h2>
+      <div class="badge warning" id="badge-balance" style="font-size: 16px;">Balance: -$2,220</div>
+    </div>
+    
+    <div class="fin-bars-container">
+      <div class="fin-col">
+        <div class="fin-bar-wrap" style="align-items: flex-start;">
+          <div class="fin-bar negative" id="fin-hidrico" style="height: 40%">-$1,370</div>
+        </div>
+        <span class="fin-label">Exceso hídrico</span>
+      </div>
+      
+      <div class="fin-col">
+        <div class="fin-bar-wrap" style="align-items: flex-start;">
+          <div class="fin-bar negative" id="fin-energia" style="height: 50%">-$2,000</div>
+        </div>
+        <span class="fin-label">Energía diésel extra</span>
+      </div>
+      
+      <div class="fin-col">
+        <div class="fin-bar-wrap">
+          <div class="fin-bar positive" id="fin-relaves" style="height: 60%">+$2,950</div>
+        </div>
+        <span class="fin-label">Relaves (ahorro)</span>
+      </div>
+      
+      <div class="fin-col">
+        <div class="fin-bar-wrap" style="align-items: flex-start;">
+          <div class="fin-bar negative" id="fin-oefa" style="height: 80%; background-color:#F0A0A0; color:#fff;">Contingente</div>
+        </div>
+        <span class="fin-label">Riesgo OEFA</span>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -319,10 +573,6 @@ const fmt = (v,decimals=0) => {
   return (v<0?'-$':'$')+s;
 };
 const clamp = (v,mn,mx)=>Math.min(mx,Math.max(mn,v));
-
-function colorVal(v){return v>=0?'#3B6D11':'#A32D2D'}
-function barColor(v){return v>=0?'#EAF3DE':'#FCEBEB'}
-function barTextColor(v){return v>=0?'#27500A':'#791F1F'}
 
 let state = {
   recirc:82, volumen:450,
@@ -377,211 +627,189 @@ function update(){
   const R = calcRelaves();
   const O = calcOEFA();
 
+  // Update Labels (Bigger sizes now)
   $('lbl-recirc').textContent = state.recirc+'%';
   $('lbl-volumen').textContent = state.volumen;
-  $('lbl-hidro').textContent = state.hidro;
-  $('lbl-red').textContent = state.red;
-  $('lbl-diesel').textContent = state.diesel.toLocaleString('en-US');
-  $('lbl-relaves-a').textContent = state.relavesA;
+  $('lbl-hidro').textContent = state.hidro + ' MWh';
+  $('lbl-red').textContent = state.red + ' MWh';
+  $('lbl-diesel').textContent = state.diesel.toLocaleString('en-US') + ' Gal';
+  $('lbl-relaves-a').textContent = state.relavesA + ' t';
   $('lbl-hum-a').textContent = state.humA+'%';
-  $('lbl-lodos').textContent = state.lodos;
+  $('lbl-lodos').textContent = state.lodos + ' t';
   $('lbl-hum-l').textContent = state.humL+'%';
   $('lbl-ph').textContent = state.ph.toFixed(1);
   $('lbl-desmonte').textContent = state.desmonte.toLocaleString('en-US');
 
-  const recircPct = clamp(state.recirc,0,100);
-  $('g-recirc').style.width = recircPct+'%';
-  $('g-recirc').style.background = recircPct>=88?'#639922':'#EF9F27';
-  $('gv-recirc').textContent = recircPct+'%';
-  $('gv-recirc').style.color = recircPct>=88?'#3B6D11':'#854F0B';
-
+  // Module 1 Updates
+  $('val-recirc').textContent = state.recirc+'%';
+  $('tbl-recirc').textContent = state.recirc+'%';
+  $('tbl-vol').textContent = state.volumen+' m³/h';
+  
+  let rColor = state.recirc >= 88 ? 'var(--c-green)' : 'var(--c-orange)';
+  $('bar-recirc').style.width = state.recirc+'%';
+  $('bar-recirc').style.background = rColor;
+  $('val-recirc').style.color = rColor;
+  
   $('res-bombeo').textContent = fmt(H.costoBombeo);
-  $('res-bombeo').style.color = colorVal(H.costoBombeo);
   $('res-ana').textContent = fmt(H.tarifaAna);
-  $('res-ana').style.color = colorVal(H.tarifaAna);
-  $('res-hidrico-total').textContent = fmt(H.total);
-  $('res-hidrico-total').style.color = colorVal(H.total);
-
-  const alertH = $('alert-hidrico');
-  const alertHTxt = $('alert-hidrico-txt');
-  if(H.total >= 0){
-    alertH.className='alert-box ag';
-    alertHTxt.innerHTML = 'Eficiencia hídrica dentro del rango objetivo. Sin sobrecostos proyectados.';
-    $('badge-hidrico').className='badge bg';
-    $('badge-hidrico').textContent='En objetivo';
-  } else {
-    alertH.className='alert-box aw';
-    const proj = Math.round(Math.abs(H.total)*3);
-    alertHTxt.innerHTML = 'Espesador #2 con baja recirculación. Sobrecosto proyectado: <strong>'+fmt(-proj)+'</strong> al cierre del día.';
-    $('badge-hidrico').className='badge bw';
-    $('badge-hidrico').textContent='Alerta operativa';
-  }
+  
   $('kpi-hidrico').textContent = fmt(H.total);
-  $('kpi-hidrico').style.color = colorVal(H.total);
-  $('kpi-hidrico-sub').textContent = H.total>=0?'Dentro de objetivo':'No planificado';
-  $('kpi-hidrico-sub').style.color = colorVal(H.total);
+  $('kpi-hidrico').className = H.total >= 0 ? 'kpi-value txt-green' : 'kpi-value txt-red';
+  $('kpi-hidrico-sub').textContent = H.total >= 0 ? 'Dentro de objetivo' : 'No planificado / turno';
+  $('kpi-hidrico-sub').className = H.total >= 0 ? 'kpi-sub txt-green' : 'kpi-sub txt-red';
 
-  $('costo-hidro').textContent = fmt(E.costoHidro);
-  $('costo-red').textContent = fmt(E.costoRed);
-  $('costo-diesel').textContent = fmt(E.costoDiesel);
+  if(H.total >= 0){
+    $('badge-hidrico').className='badge success';
+    $('badge-hidrico').textContent='En objetivo';
+    $('alert-hidrico').style.display = 'none';
+  } else {
+    $('badge-hidrico').className='badge warning';
+    $('badge-hidrico').textContent='Alerta operativa';
+    $('alert-hidrico').style.display = 'block';
+    $('proj-hidrico').textContent = fmt(Math.round(Math.abs(H.total)*3));
+  }
+
+  // Module 2 Updates
   $('co2-red').textContent = E.co2Red+' tCO₂e';
   $('co2-diesel').textContent = E.co2Diesel+' tCO₂e';
-  const maxCO2 = 60;
-  const co2Pct = clamp(Math.round(E.totalCO2/maxCO2*100),0,100);
-  $('g-co2').style.width = co2Pct+'%';
-  $('g-co2').style.background = E.totalCO2>35.4?'#E24B4A':'#639922';
-  $('gv-co2').textContent = E.totalCO2+' t';
-  $('gv-co2').style.color = E.totalCO2>35.4?'#A32D2D':'#3B6D11';
-  const totalEnergia = E.costoHidro+E.costoRed+E.costoDiesel;
+  
+  let maxCo2Graph = 40;
+  $('bar-co2-diesel').style.width = clamp((E.co2Diesel/maxCo2Graph)*100, 5, 100) + '%';
+  $('val-co2-diesel').textContent = E.co2Diesel;
+  $('bar-co2-red').style.width = clamp((E.co2Red/maxCo2Graph)*100, 5, 100) + '%';
+  $('val-co2-red').textContent = E.co2Red;
+
+  let totalEnergia = E.costoHidro + E.costoRed + E.costoDiesel;
   $('kpi-energia').textContent = fmt(totalEnergia);
+  
   const dieselPct = Math.round((state.diesel/2232-1)*100);
-  const alertE = $('alert-energia');
-  const alertETxt = $('alert-energia-txt');
-  if(dieselPct<=0){
-    alertE.className='alert-box ag';
-    alertETxt.innerHTML='Consumo diésel dentro de la línea base. Sin penalidad interna por emisiones.';
-    $('badge-energia').className='badge bg';
+  if(dieselPct <= 0){
+    $('badge-energia').className='badge success';
     $('badge-energia').textContent='Diésel en objetivo';
     $('kpi-energia-sub').textContent='Dentro de línea base';
-    $('kpi-energia-sub').style.color='#3B6D11';
+    $('kpi-energia-sub').className='kpi-sub txt-green';
   } else {
-    alertE.className='alert-box aw';
-    alertETxt.innerHTML='Consumo diésel supera línea base en <strong>'+dieselPct+'%</strong>. Penalidad interna por emisiones no presupuestadas.';
-    $('badge-energia').className='badge bw';
+    $('badge-energia').className='badge warning';
     $('badge-energia').textContent='Diésel +'+dieselPct+'% base';
-    $('kpi-energia-sub').textContent='+'+dieselPct+'% línea base';
-    $('kpi-energia-sub').style.color='#854F0B';
+    $('kpi-energia-sub').textContent='+'+dieselPct+'% sobre línea base';
+    $('kpi-energia-sub').className='kpi-sub txt-orange';
   }
 
-  const humAF = $('g-hum-a');
-  const humAP = clamp(Math.round(state.humA/25*100),0,100);
-  humAF.style.width=humAP+'%';
-  humAF.style.background=state.humA<=16?'#639922':'#EF9F27';
-  $('gv-hum-a').textContent=state.humA+'%';
-  $('gv-hum-a').style.color=state.humA<=16?'#3B6D11':'#854F0B';
-  const humLF = $('g-hum-l');
-  const humLP = clamp(Math.round(state.humL/35*100),0,100);
-  humLF.style.width=humLP+'%';
-  humLF.style.background=state.humL<=17?'#639922':'#EF9F27';
-  $('gv-hum-l').textContent=state.humL+'%';
-  $('gv-hum-l').style.color=state.humL<=17?'#3B6D11':'#854F0B';
-  $('res-ah-relaves').textContent=fmt(R.ahorro);
-  $('res-ah-relaves').style.color='#3B6D11';
-  $('res-sob-lodos').textContent=fmt(R.sobrecosto);
-  $('res-sob-lodos').style.color=colorVal(R.sobrecosto);
-  $('res-relaves-total').textContent=fmt(R.total);
-  $('res-relaves-total').style.color=colorVal(R.total);
-  $('kpi-relaves').textContent=fmt(R.total);
-  $('kpi-relaves').style.color=colorVal(R.total);
-  $('kpi-relaves-sub').textContent=R.total>=0?'Ahorro neto':'Sobrecosto';
-  $('kpi-relaves-sub').style.color=colorVal(R.total);
-  $('badge-relaves').textContent=(R.total>=0?'Ahorro: ':'Pérdida: ')+fmt(R.total);
-  $('badge-relaves').className=R.total>=0?'badge bg':'badge bw';
-  const alertR=$('alert-relaves');
-  const alertRTxt=$('alert-relaves-txt');
-  if(R.total>=0){
-    alertR.className='alert-box ag';
-    alertRTxt.innerHTML='Relaves Planta A en rango óptimo. Balance logístico positivo para el turno.';
+  // Module 3 Updates
+  $('val-hum-a').textContent = state.humA+'%';
+  let cHumA = state.humA <= 16 ? 'var(--c-green)' : 'var(--c-orange)';
+  $('bar-hum-a').style.width = clamp((state.humA/35)*100, 5, 100)+'%';
+  $('bar-hum-a').style.background = cHumA;
+  $('val-hum-a').style.color = cHumA;
+
+  $('val-hum-l').textContent = state.humL+'%';
+  let cHumL = state.humL <= 17 ? 'var(--c-green)' : 'var(--c-orange)';
+  $('bar-hum-l').style.width = clamp((state.humL/35)*100, 5, 100)+'%';
+  $('bar-hum-l').style.background = cHumL;
+  $('val-hum-l').style.color = cHumL;
+
+  $('res-ah-relaves').textContent = fmt(R.ahorro);
+  $('res-sob-lodos').textContent = fmt(R.sobrecosto);
+  
+  $('kpi-relaves').textContent = fmt(R.total);
+  $('kpi-relaves').className = R.total >= 0 ? 'kpi-value txt-green' : 'kpi-value txt-red';
+  $('kpi-relaves-sub').textContent = R.total >= 0 ? 'Neto logística turno' : 'Pérdida logística';
+  $('kpi-relaves-sub').className = R.total >= 0 ? 'kpi-sub txt-green' : 'kpi-sub txt-red';
+  
+  $('badge-relaves').textContent = (R.total >= 0 ? 'Ahorro neto: ' : 'Pérdida: ') + fmt(R.total);
+  $('badge-relaves').className = R.total >= 0 ? 'badge success' : 'badge danger';
+
+  // Module 4 Updates
+  $('res-ph').textContent = state.ph.toFixed(1) + ' pH';
+  let phColor = state.ph < 6.0 ? 'var(--c-red)' : state.ph < 6.5 ? 'var(--c-orange)' : 'var(--c-green)';
+  $('res-ph').style.color = phColor;
+  $('lbl-ph').style.color = phColor;
+  $('bar-ph').style.width = clamp(((state.ph-5)/4)*100, 5, 100)+'%';
+  $('bar-ph').style.background = phColor;
+
+  if(O.uittValue > 0) {
+    $('res-multa').textContent = '≥'+O.uittValue+' UIT (S/ '+(O.uittValue*5150).toLocaleString('en-US')+')';
+    $('alert-oefa-txt').textContent = 'Material de desmonte detectado en zona fuera del EIA. Se requiere inicio inmediato de remoción de tierras.';
+    $('kpi-oefa').textContent = O.uittValue + ' UIT';
+    $('kpi-oefa').className = 'kpi-value txt-red';
+    $('kpi-oefa-sub').textContent = 'Multa contingente';
+    $('badge-oefa').className = 'badge danger';
+    $('badge-oefa').textContent = 'Acción inmediata';
+  } else if (state.ph < 6.0) {
+    $('res-multa').textContent = 'Infracción por pH';
+    $('alert-oefa-txt').textContent = 'El pH del efluente está por debajo del límite regulatorio de 6.0.';
+    $('kpi-oefa').textContent = 'Alerta pH';
+    $('kpi-oefa').className = 'kpi-value txt-red';
+    $('kpi-oefa-sub').textContent = 'Fuera de norma';
+    $('badge-oefa').className = 'badge danger';
+    $('badge-oefa').textContent = 'Acción inmediata';
   } else {
-    alertR.className='alert-box aw';
-    alertRTxt.innerHTML='Humedades elevadas incrementan peso y costo de transporte. Optimizar centrifugación.';
+    $('res-multa').textContent = 'Ninguno';
+    $('alert-oefa-txt').textContent = 'Parámetros dentro de norma. Sin riesgo activo.';
+    $('kpi-oefa').textContent = 'Normal';
+    $('kpi-oefa').className = 'kpi-value txt-green';
+    $('kpi-oefa-sub').textContent = 'Sin contingencias';
+    $('badge-oefa').className = 'badge success';
+    $('badge-oefa').textContent = 'Sin riesgo';
   }
 
-  const phF = $('g-ph');
-  const phPct = clamp(Math.round((state.ph-5.5)/3.5*100),0,100);
-  phF.style.width=phPct+'%';
-  phF.style.background=state.ph<6.0?'#E24B4A':state.ph<6.5?'#EF9F27':'#639922';
-  $('res-ph').textContent=state.ph.toFixed(1);
-  $('res-ph').style.color=state.ph<6.0?'#A32D2D':state.ph<6.5?'#854F0B':'#3B6D11';
-  $('res-desmonte').textContent=state.desmonte.toLocaleString('en-US')+' t';
-  $('res-desmonte').style.color=O.uittValue>0?'#A32D2D':'#3B6D11';
-  const desmonteCard=$('card-desmonte');
-  const riesgoLbl=$('riesgo-oefa-lbl');
-  if(O.uittValue>0){
-    desmonteCard.style.borderColor='#F09595';
-    riesgoLbl.innerHTML='<span class="risk-pill" style="background:#FCEBEB;color:#791F1F"><i class="ti ti-alert-triangle" aria-hidden="true" style="font-size:10px"></i> Multa: ≥'+O.uittValue+' UIT (S/'+(O.uittValue*5150).toLocaleString('en-US')+')</span>';
-  } else {
-    desmonteCard.style.borderColor='var(--color-border-tertiary)';
-    riesgoLbl.innerHTML='<span class="risk-pill" style="background:#EAF3DE;color:#27500A"><i class="ti ti-check" aria-hidden="true" style="font-size:10px"></i> Sin desmonte fuera de EIA</span>';
-  }
-  const alertOefa=$('alert-oefa');
-  const alertOefaTxt=$('alert-oefa-txt');
-  const phRisk=state.ph<6.0;
-  if(!phRisk && O.uittValue===0){
-    alertOefa.className='alert-box ag';
-    alertOefaTxt.innerHTML='Todos los parámetros ambientales dentro de los límites normativos. Sin riesgo regulatorio activo.';
-    $('badge-oefa').className='badge bg';
-    $('badge-oefa').innerHTML='<i class="ti ti-check" aria-hidden="true"></i> Sin riesgo';
-  } else {
-    alertOefa.className='alert-box ar';
-    let msg='';
-    if(phRisk) msg+='pH por debajo del límite mínimo (6.0). Riesgo de infracción activa. ';
-    if(O.uittValue>0) msg+='Desmonte fuera de área EIA. Multa contingente OEFA: ≥'+O.uittValue+' UIT.';
-    alertOefaTxt.innerHTML=msg;
-    $('badge-oefa').className='badge br';
-    $('badge-oefa').innerHTML='<span class="pulse"></span> Acción inmediata';
-  }
-
+  // Summary Updates
   const totalTurno = H.total - E.overDiesel + R.total;
-  $('kpi-total').textContent=fmt(totalTurno);
-  $('kpi-total').style.color=colorVal(totalTurno);
-  $('kpi-total-sub').textContent=totalTurno>=0?'Dentro de presupuesto':'Desviación presupuesto';
-  $('kpi-total-sub').style.color=colorVal(totalTurno);
-
-  const estadoBadge=$('estado-badge');
-  if(totalTurno>=0 && !phRisk && O.uittValue===0){
-    estadoBadge.className='badge bg';
-    $('estado-txt').textContent='Estado: óptimo';
-  } else if(totalTurno>-5000 && O.uittValue<=5){
-    estadoBadge.className='badge bw';
-    $('estado-txt').textContent='Alerta amarilla';
+  
+  if(totalTurno >= 0 && state.ph >= 6.0 && O.uittValue === 0){
+    $('main-status').className = 'badge success';
+    $('main-status').innerHTML = 'Estado: Óptimo &nbsp;|&nbsp; Balance: ' + fmt(totalTurno);
+    $('badge-balance').className = 'badge success';
+  } else if(totalTurno > -5000 && O.uittValue <= 5){
+    $('main-status').className = 'badge warning';
+    $('main-status').innerHTML = 'Alerta Amarilla &nbsp;|&nbsp; Desviación: ' + fmt(totalTurno);
+    $('badge-balance').className = 'badge warning';
   } else {
-    estadoBadge.className='badge br';
-    $('estado-txt').textContent='Alerta roja';
+    $('main-status').className = 'badge danger';
+    $('main-status').innerHTML = 'Alerta Roja &nbsp;|&nbsp; Desviación crítica: ' + fmt(totalTurno);
+    $('badge-balance').className = 'badge danger';
   }
+  $('badge-balance').textContent = 'Balance Total: ' + fmt(totalTurno);
 
-  const maxBar=8000;
-  const hPx = clamp(Math.round(Math.abs(H.total)/maxBar*100),5,95);
-  $('bar-hidrico').style.width=hPx+'%';
-  $('bar-hidrico').style.background=barColor(H.total);
-  $('bar-hidrico').style.color=barTextColor(H.total);
-  $('bar-hidrico').textContent=fmt(H.total);
-  const ePx = clamp(Math.round(E.overDiesel/maxBar*100),5,95);
-  $('bar-energia').style.width=ePx+'%';
-  $('bar-energia').textContent=fmt(-E.overDiesel);
-  const rPx = clamp(Math.round(R.total/maxBar*100),5,95);
-  $('bar-relaves').style.width=rPx+'%';
-  $('bar-relaves').style.background=barColor(R.total);
-  $('bar-relaves').style.color=barTextColor(R.total);
-  $('bar-relaves').textContent=fmt(R.total);
-  const tPx = clamp(Math.round(Math.abs(totalTurno)/maxBar*100),5,95);
-  $('bar-total').style.width=tPx+'%';
-  $('bar-total').style.background=barColor(totalTurno);
-  $('bar-total').style.color=barTextColor(totalTurno);
-  $('bar-total').textContent=fmt(totalTurno);
-  $('badge-balance').textContent='Balance: '+fmt(totalTurno);
-  $('badge-balance').className=totalTurno>=0?'badge bg':'badge bw';
-
-  $('sum-hidrico').textContent=fmt(H.total);
-  $('sum-hidrico').style.color=colorVal(H.total);
-  $('sum-energia').textContent=fmt(-E.overDiesel);
-  $('sum-energia').style.color=E.overDiesel>0?'#A32D2D':'#3B6D11';
-  $('sum-relaves').textContent=fmt(R.total);
-  $('sum-relaves').style.color=colorVal(R.total);
+  // Bottom Bars Visual representation
+  const maxAbs = Math.max(Math.abs(H.total), Math.abs(E.overDiesel), Math.abs(R.total), 4000); // 4000 as base ceiling for visuals
+  
+  $('fin-hidrico').style.height = clamp((Math.abs(H.total)/maxAbs)*100, 5, 100) + '%';
+  $('fin-hidrico').textContent = fmt(H.total);
+  
+  $('fin-energia').style.height = clamp((Math.abs(E.overDiesel)/maxAbs)*100, 5, 100) + '%';
+  $('fin-energia').textContent = fmt(-E.overDiesel);
+  
+  $('fin-relaves').style.height = clamp((Math.abs(R.total)/maxAbs)*100, 5, 100) + '%';
+  $('fin-relaves').textContent = fmt(R.total);
+  
+  if (O.uittValue > 0 || state.ph < 6.0) {
+      $('fin-oefa').style.height = '70%';
+      $('fin-oefa').textContent = 'Riesgo';
+      $('fin-oefa').style.opacity = '1';
+  } else {
+      $('fin-oefa').style.height = '5%';
+      $('fin-oefa').textContent = '';
+      $('fin-oefa').style.opacity = '0.3';
+  }
 }
 
+// Event Listeners for Sliders
 ['sl-recirc','sl-volumen','sl-hidro','sl-red','sl-diesel','sl-relaves-a','sl-hum-a','sl-lodos','sl-hum-l','sl-ph','sl-desmonte'].forEach(id=>{
   $(id).addEventListener('input',e=>{
-    const v=parseFloat(e.target.value);
-    const map={
+    const v = parseFloat(e.target.value);
+    const map = {
       'sl-recirc':'recirc','sl-volumen':'volumen','sl-hidro':'hidro','sl-red':'red',
       'sl-diesel':'diesel','sl-relaves-a':'relavesA','sl-hum-a':'humA','sl-lodos':'lodos',
       'sl-hum-l':'humL','sl-ph':'ph','sl-desmonte':'desmonte'
     };
-    state[map[id]]=v;
+    state[map[id]] = v;
     update();
   });
 });
 
+// Initialize
 update();
 </script>
+</body>
+</html>
