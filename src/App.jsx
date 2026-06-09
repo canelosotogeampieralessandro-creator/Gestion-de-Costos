@@ -823,7 +823,7 @@ const reportData = {
     ]
   },
   rscContent: {
-    title: "Importancia de la Responsabilidad Social Corporativa (RSC)",
+    title: "Importancia de la Responsabilidad Social Empresarial (RSE)",
     intro: "La Responsabilidad Social Corporativa no es solo un compromiso ético, sino una estrategia fundamental para el desarrollo sostenible de nuestra organización. A través de la RSC, generamos valor compartido: protegemos el medio ambiente, promovemos el bienestar de las comunidades locales y garantizamos la viabilidad de nuestras operaciones mineras a largo plazo. Integrar prácticas sostenibles nos permite mitigar riesgos, optimizar recursos y fortalecer la confianza con todos nuestros grupos de interés.",
     modules: [
       {
@@ -1279,7 +1279,7 @@ export default function App() {
             onClick={goToRSC}
             className="w-full mt-2 bg-[#EAAA00] hover:bg-[#d49900] text-[#002855] rounded-3xl py-8 px-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-100 flex flex-col items-center justify-center gap-2"
           >
-            <span className="text-2xl font-bold uppercase tracking-wide">Importancia de la RSC</span>
+            <span className="text-2xl font-bold uppercase tracking-wide">Importancia de la RSE</span>
           </button>
         </div>
         <button 
@@ -1624,7 +1624,7 @@ export default function App() {
     );
   }
 
-  // 7. Vista de Importancia de la RSC
+  // 7. Vista de Importancia de la RSE
   if (currentView === 'rsc') {
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4 md:p-8 font-sans">
