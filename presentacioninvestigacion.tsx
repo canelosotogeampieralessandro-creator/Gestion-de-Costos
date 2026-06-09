@@ -576,7 +576,357 @@ const reportData = {
   },
   rscContent: {
     title: "Importancia de la Responsabilidad Social Corporativa (RSC)",
-    content: "La Responsabilidad Social Corporativa no es solo un compromiso ético, sino una estrategia fundamental para el desarrollo sostenible de nuestra organización. A través de la RSC, generamos valor compartido: protegemos el medio ambiente, promovemos el bienestar de las comunidades locales y garantizamos la viabilidad de nuestras operaciones mineras a largo plazo. Integrar prácticas sostenibles nos permite mitigar riesgos, optimizar recursos y fortalecer la confianza con todos nuestros grupos de interés."
+    intro: "La Responsabilidad Social Corporativa no es solo un compromiso ético, sino una estrategia fundamental para el desarrollo sostenible de nuestra organización. A través de la RSC, generamos valor compartido: protegemos el medio ambiente, promovemos el bienestar de las comunidades locales y garantizamos la viabilidad de nuestras operaciones mineras a largo plazo. Integrar prácticas sostenibles nos permite mitigar riesgos, optimizar recursos y fortalecer la confianza con todos nuestros grupos de interés.",
+    modules: [
+      {
+        id: 1,
+        title: "Transparencia Radical de Riesgos y la Adopción Obligatoria de las Normas Internacionales NIIF S1 y S2",
+        description: "La implementación de las normas NIIF S1 y S2 establece un marco integral para la divulgación de riesgos de sostenibilidad y cambio climático.",
+        content: (
+          <div className="flex flex-col gap-8 w-full text-left">
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
+              <p className="text-slate-800 font-semibold mb-2">🎯 Marco Normativo Histórico</p>
+              <p className="text-slate-700">El 18 de marzo de 2026, el Consejo Normativo de Contabilidad (CNC) de Perú aprobó oficialmente las normas NIIF S1 y NIIF S2, convergiendo con estándares globales emitidos por el Consejo de Normas Internacionales de Sostenibilidad (ISSB).</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-xl border border-slate-200">
+                <h4 className="font-bold text-[#002855] mb-3 flex items-center gap-2">
+                  <span className="text-xl">📊</span> NIIF S1
+                </h4>
+                <p className="text-sm text-slate-700 leading-relaxed">Asuntos de sostenibilidad materiales inherentes al modelo de negocio e impacto en flujos de efectivo presentes y proyectados.</p>
+              </div>
+              <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-xl border border-slate-200">
+                <h4 className="font-bold text-[#002855] mb-3 flex items-center gap-2">
+                  <span className="text-xl">🌡️</span> NIIF S2
+                </h4>
+                <p className="text-sm text-slate-700 leading-relaxed">Riesgos climáticos físicos y de transición que afectan la viabilidad a largo plazo de la estrategia corporativa.</p>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <h4 className="font-bold text-[#002855]">⚠️ Prevención del Greenwashing</h4>
+              <div className="space-y-2">
+                <div className="flex gap-3">
+                  <span className="text-[#EAAA00] font-bold text-lg">✓</span>
+                  <p className="text-slate-700"><strong>Revelación Estandarizada:</strong> Información homogénea y comparable que permite análisis real del desempeño ambiental.</p>
+                </div>
+                <div className="flex gap-3">
+                  <span className="text-[#EAAA00] font-bold text-lg">✓</span>
+                  <p className="text-slate-700"><strong>Castigo Normativo:</strong> Sanciones severas por incumplimiento o fraude en reportes de sostenibilidad.</p>
+                </div>
+                <div className="flex gap-3">
+                  <span className="text-[#EAAA00] font-bold text-lg">✓</span>
+                  <p className="text-slate-700"><strong>Decisiones Fundadas:</strong> Inversionistas disponen de información para asignación eficiente de capital.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#002855]/5 border border-[#002855]/20 p-6 rounded-lg">
+              <p className="text-slate-800 text-sm leading-relaxed">
+                <strong className="text-[#002855]">Resultado clave:</strong> La adopción obligatoria de NIIF S1 y S2 cierra el vacío histórico entre el desempeño ambiental real y la información financiera reportada, permitiendo una transición ordenada hacia neutralidad climática e inversión responsable.
+              </p>
+            </div>
+          </div>
+        )
+      },
+      {
+        id: 2,
+        title: "Exactitud Forense en el Reconocimiento Contable de Provisiones y Pasivos Contingentes (Enfoque NIC 37)",
+        description: "La precisión en la valorización de provisiones bajo NIC 37 asegura que todos los pasivos potenciales sean contabilizados con exactitud científica.",
+        content: (
+          <div className="flex flex-col gap-8 w-full text-left">
+            <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
+              <p className="text-slate-800 font-semibold mb-2">🔬 Enfoque Forense: De la Etapa Inicial al Post-Cierre</p>
+              <p className="text-slate-700 text-sm">La verdadera RSE implica contabilizar desde el primer día de operación el ciclo completo de vida del activo minero: prospección, explotación, remediación y cierre perpetuo.</p>
+            </div>
+
+            <div className="bg-white border-2 border-slate-200 p-6 rounded-xl">
+              <h4 className="font-bold text-[#002855] mb-4">📋 Componentes Clave de Provisiones (NIC 37):</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-4 rounded-lg">
+                  <p className="font-semibold text-[#002855] mb-2">Cierre de Instalaciones</p>
+                  <p className="text-xs text-slate-700">Desmantelamiento, estabilización y sellado permanente de operaciones mineras.</p>
+                </div>
+                <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-4 rounded-lg">
+                  <p className="font-semibold text-[#002855] mb-2">Remediación de Tierras</p>
+                  <p className="text-xs text-slate-700">Recuperación y restauración ecológica de zonas impactadas por actividad extractiva.</p>
+                </div>
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg">
+                  <p className="font-semibold text-[#002855] mb-2">Tratamiento de Efluentes</p>
+                  <p className="text-xs text-slate-700">Gestión perpetua de drenaje ácido y aguas residuales post-cierre.</p>
+                </div>
+                <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg">
+                  <p className="font-semibold text-[#002855] mb-2">Monitoreo Ambiental</p>
+                  <p className="text-xs text-slate-700">Vigilancia a largo plazo de calidad de suelos, aguas y ecosistemas.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <h4 className="font-bold text-[#002855]">⚙️ Metodología Rigurosa de Cálculo</h4>
+              <div className="flex gap-4 p-6 bg-slate-50 rounded-xl">
+                <div className="min-w-fit">
+                  <div className="bg-[#002855] text-white font-bold w-8 h-8 flex items-center justify-center rounded-full text-sm">1</div>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-800">Estimación Técnica Óptima</p>
+                  <p className="text-sm text-slate-600">Costos de ingeniería civil, movimiento de tierras, tratamiento químico basados en data histórica y estándares internacionales.</p>
+                </div>
+              </div>
+              <div className="flex gap-4 p-6 bg-slate-50 rounded-xl">
+                <div className="min-w-fit">
+                  <div className="bg-[#002855] text-white font-bold w-8 h-8 flex items-center justify-center rounded-full text-sm">2</div>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-800">Tasa de Descuento Rigurosa</p>
+                  <p className="text-sm text-slate-600">Refleja el costo de oportunidad del dinero, riesgos específicos, inflacionarios y cambiarios inherentes.</p>
+                </div>
+              </div>
+              <div className="flex gap-4 p-6 bg-slate-50 rounded-xl">
+                <div className="min-w-fit">
+                  <div className="bg-[#002855] text-white font-bold w-8 h-8 flex items-center justify-center rounded-full text-sm">3</div>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-800">Valor Presente Contabilizado</p>
+                  <p className="text-sm text-slate-600">Pasivos descontados matemáticamente para reflejar el costo real actual de obligaciones futuras.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-red-50 border border-red-200 p-6 rounded-lg">
+              <p className="font-bold text-[#002855] mb-2">⚠️ Riesgo de Contabilidad Miope</p>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Subestimar el costo de neutralización (ej. drenaje ácido a perpetuidad) infla artificialmente las utilidades presentes pero sacrifica irreparablemente la solvencia futura y expone a la corporación a litigios, multas OEFA y quiebra técnica.
+              </p>
+            </div>
+
+            <div className="bg-[#002855]/5 border border-[#002855]/20 p-6 rounded-lg">
+              <p className="text-slate-800 text-sm leading-relaxed">
+                <strong className="text-[#002855]">Resultado clave:</strong> Una contabilidad técnica, conservadora y precisa bajo NIC 37 blinda el patrimonio corporativo, garantiza equidad intergeneracional y reduce sorpresas regulatorias adversas.
+              </p>
+            </div>
+          </div>
+        )
+      },
+      {
+        id: 3,
+        title: "Reducción Matemática del Costo Promedio Ponderado de Capital (WACC) y Atracción de Financiamiento",
+        description: "La implementación de prácticas RSC reduce el WACC al disminuir el riesgo percibido, generando un menor costo de capital.",
+        content: (
+          <div className="flex flex-col gap-8 w-full text-left">
+            <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-lg">
+              <p className="text-slate-800 font-semibold mb-2">💰 Materialidad Financiera del Riesgo ESG</p>
+              <p className="text-slate-700 text-sm">Los billones de dólares gestionados por inversionistas institucionales globales, fondos soberanos de pensiones y banca multilateral exigen métricas ESG auditadas como precondición para cualquier Due Diligence.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 p-6 rounded-xl border border-emerald-200">
+                <h4 className="font-bold text-[#002855] mb-3">📈 WACC Reducido</h4>
+                <div className="space-y-1 text-sm">
+                  <p className="text-slate-700"><strong>Menor riesgo crediticio</strong></p>
+                  <p className="text-slate-600">Mejores ratings de deuda corporativa</p>
+                </div>
+              </div>
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200">
+                <h4 className="font-bold text-[#002855] mb-3">🎯 VPN Incrementado</h4>
+                <div className="space-y-1 text-sm">
+                  <p className="text-slate-700"><strong>Mayor viabilidad</strong></p>
+                  <p className="text-slate-600">Proyectos de inversión financieramente atractivos</p>
+                </div>
+              </div>
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200">
+                <h4 className="font-bold text-[#002855] mb-3">💎 Capital Fresco</h4>
+                <div className="space-y-1 text-sm">
+                  <p className="text-slate-700"><strong>Tasas competitivas</strong></p>
+                  <p className="text-slate-600">Acceso a financiamiento innovador y subsidiado</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h4 className="font-bold text-[#002855]">🏦 Instrumentos de Financiamiento Innovadores</h4>
+              
+              <div className="bg-white border-2 border-[#EAAA00] p-6 rounded-xl">
+                <div className="flex gap-4 items-start">
+                  <span className="text-3xl">🟢</span>
+                  <div className="flex-1">
+                    <p className="font-bold text-[#002855] mb-1">Líneas de Crédito de Transición Climática</p>
+                    <p className="text-sm text-slate-700">Tasas de interés preferenciales para proyectos de descarbonización y adaptación climática.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white border-2 border-[#EAAA00] p-6 rounded-xl">
+                <div className="flex gap-4 items-start">
+                  <span className="text-3xl">🟢</span>
+                  <div className="flex-1">
+                    <p className="font-bold text-[#002855] mb-1">Bonos Verdes (Green Bonds)</p>
+                    <p className="text-sm text-slate-700">Emisión etiquetada para financiar proyectos ambientales con demanda global creciente.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white border-2 border-[#EAAA00] p-6 rounded-xl">
+                <div className="flex gap-4 items-start">
+                  <span className="text-3xl">🟢</span>
+                  <div className="flex-1">
+                    <p className="font-bold text-[#002855] mb-1">Sustainability-Linked Bonds</p>
+                    <p className="text-sm text-slate-700">Tasas indexadas a cumplimiento de metas ESG predefinidas, incentivando desempeño sostenible.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-[#002855] to-[#1a3a6a] text-white p-8 rounded-xl">
+              <h4 className="font-bold mb-4 flex items-center gap-2">
+                <span className="text-2xl">♻️</span> El Círculo Virtuoso de la Sostenibilidad
+              </h4>
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+                <div className="text-center">
+                  <p className="font-bold mb-1">Menores Costos</p>
+                  <p>WACC reducido</p>
+                </div>
+                <div className="text-lg">→</div>
+                <div className="text-center">
+                  <p className="font-bold mb-1">Reinversión</p>
+                  <p>Tecnologías limpias</p>
+                </div>
+                <div className="text-lg">→</div>
+                <div className="text-center">
+                  <p className="font-bold mb-1">Mejora ESG</p>
+                  <p>Indicadores superiores</p>
+                </div>
+                <div className="text-lg">→</div>
+                <div className="text-center">
+                  <p className="font-bold mb-1">Más Capital</p>
+                  <p>Acceso global</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#002855]/5 border border-[#002855]/20 p-6 rounded-lg">
+              <p className="text-slate-800 text-sm leading-relaxed">
+                <strong className="text-[#002855]">Resultado clave:</strong> El impacto de la RSE en calidad financiera es medible y directo: reducción del WACC incrementa VPN, mejora márgenes operativos y retorno sobre inversión, atrayendo capital institucional global.
+              </p>
+            </div>
+          </div>
+        )
+      },
+      {
+        id: 4,
+        title: "Preservación Estratégica de la Continuidad Operativa y Gestión Integral de Crisis Corporativas",
+        description: "La gestión proactiva de crisis mediante RSC garantiza la continuidad operativa ante eventos adversos.",
+        content: (
+          <div className="flex flex-col gap-8 w-full text-left">
+            <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-lg">
+              <p className="text-slate-800 font-semibold mb-2">⚡ La Información Financiera Refleja la Operación</p>
+              <p className="text-slate-700 text-sm">Los números en estados financieros son la proyección numérica del desempeño operativo subyacente. Nada destruye proyecciones financieras más rápido que interrupciones operativas imprevistas.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-red-50 border-l-4 border-red-500 p-5 rounded-lg">
+                <h4 className="font-bold text-red-700 mb-3">⚠️ Riesgo Supremo</h4>
+                <div className="space-y-2 text-sm">
+                  <p className="text-slate-700">• Bloqueos de acceso logístico</p>
+                  <p className="text-slate-700">• Paros laborales y conflictividad social</p>
+                  <p className="text-slate-700">• Pérdida de licencia social</p>
+                  <p className="text-slate-700">• Interrupción inmediata de generación de caja</p>
+                </div>
+              </div>
+              <div className="bg-green-50 border-l-4 border-green-500 p-5 rounded-lg">
+                <h4 className="font-bold text-green-700 mb-3">✅ Respuesta RSC</h4>
+                <div className="space-y-2 text-sm">
+                  <p className="text-slate-700">• Plataformas de diálogo preventivo</p>
+                  <p className="text-slate-700">• Gestión transparente de recursos críticos</p>
+                  <p className="text-slate-700">• Inversión en relaciones comunitarias</p>
+                  <p className="text-slate-700">• Mantención de licencia social</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h4 className="font-bold text-[#002855]">🛡️ Cinco Pilares de Resiliencia Operativa</h4>
+              
+              <div className="flex gap-4 p-4 bg-slate-50 rounded-lg border-l-4 border-blue-500">
+                <span className="text-3xl font-bold text-blue-500 flex-shrink-0">1</span>
+                <div>
+                  <p className="font-bold text-[#002855]">Identificación Temprana de Riesgos Sistémicos</p>
+                  <p className="text-sm text-slate-700">Mapeo prospectivo de amenazas ambientales, regulatorias y comunitarias.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 p-4 bg-slate-50 rounded-lg border-l-4 border-purple-500">
+                <span className="text-3xl font-bold text-purple-500 flex-shrink-0">2</span>
+                <div>
+                  <p className="font-bold text-[#002855]">Diversificación de Cadenas de Suministro</p>
+                  <p className="text-sm text-slate-700">Redundancia logística para mitigar interrupciones puntuales.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 p-4 bg-slate-50 rounded-lg border-l-4 border-yellow-500">
+                <span className="text-3xl font-bold text-yellow-500 flex-shrink-0">3</span>
+                <div>
+                  <p className="font-bold text-[#002855]">Protocolos de Crisis Pre-Establecidos</p>
+                  <p className="text-sm text-slate-700">Procedimientos documentados para respuesta inmediata ante eventos adversos.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 p-4 bg-slate-50 rounded-lg border-l-4 border-green-500">
+                <span className="text-3xl font-bold text-green-500 flex-shrink-0">4</span>
+                <div>
+                  <p className="font-bold text-[#002855]">Relaciones Fortalecidas con Comunidades</p>
+                  <p className="text-sm text-slate-700">Diálogo permanente con autoridades locales y grupos de interés.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 p-4 bg-slate-50 rounded-lg border-l-4 border-indigo-500">
+                <span className="text-3xl font-bold text-indigo-500 flex-shrink-0">5</span>
+                <div>
+                  <p className="font-bold text-[#002855]">Cobertura de Seguros Integral</p>
+                  <p className="text-sm text-slate-700">Protección contra eventos ambientales, sociales y operativos catastróficos.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-[#002855]/10 to-[#EAAA00]/10 border border-[#002855]/20 p-6 rounded-xl">
+              <h4 className="font-bold text-[#002855] mb-4">📊 Beneficios Financieros de la Resiliencia</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="flex gap-2">
+                  <span className="text-lg">✓</span>
+                  <p className="text-sm text-slate-700"><strong>Menor volatilidad:</strong> Flujos de caja predecibles y estables</p>
+                </div>
+                <div className="flex gap-2">
+                  <span className="text-lg">✓</span>
+                  <p className="text-sm text-slate-700"><strong>Protección patrimonial:</strong> Mitigación de pérdidas por lucro cesante</p>
+                </div>
+                <div className="flex gap-2">
+                  <span className="text-lg">✓</span>
+                  <p className="text-sm text-slate-700"><strong>Viabilidad a largo plazo:</strong> Operaciones sostenibles en tiempo</p>
+                </div>
+                <div className="flex gap-2">
+                  <span className="text-lg">✓</span>
+                  <p className="text-sm text-slate-700"><strong>Proyecciones fiables:</strong> Inversionistas pueden modelar con confianza</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-lg">
+              <p className="font-bold text-[#002855] mb-3">🎯 Caso de Estudio: Lecciones de Julcani y Orcopampa</p>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Los bloqueos logísticos en unidades mineras de Buenaventura ejemplifican cómo el rechazo comunitario genera inestabilidad política, operativa y financiera inmediata. La materialización de conflictividad social causa evaporación catastrófica de generación de caja, demostrando que la RSE no es un costo sino una inversión en seguro operativo.
+              </p>
+            </div>
+
+            <div className="bg-[#002855]/5 border border-[#002855]/20 p-6 rounded-lg">
+              <p className="text-slate-800 text-sm leading-relaxed">
+                <strong className="text-[#002855]">Resultado clave:</strong> La RSE actuá como la cobertura de seguros corporativa más robusta, económica y efectiva contra interrupciones operativas, garantizando continuidad de flujos de ingresos y predicción confiable para inversionistas a largo plazo.
+              </p>
+            </div>
+          </div>
+        )
+      }
+    ]
   }
 };
 
@@ -993,32 +1343,120 @@ export default function App() {
   if (currentView === 'rsc') {
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4 md:p-8 font-sans">
-        <div className="w-full max-w-5xl flex flex-col gap-6">
-          <div className="bg-[#002855] rounded-[2.5rem] p-8 md:p-14 shadow-2xl relative overflow-hidden flex flex-col items-center text-center border border-slate-700">
+        <div className="w-full max-w-6xl flex flex-col gap-8">
+          
+          {/* Encabezado */}
+          <div className="bg-[#002855] rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden flex flex-col items-center text-center border border-slate-700">
             <div className="absolute top-0 left-0 w-full h-3 bg-[#EAAA00]"></div>
             <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#EAAA00]/10 rounded-full blur-3xl"></div>
             <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
             
-            <svg className="w-16 h-16 text-[#EAAA00] mb-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+            <svg className="w-14 h-14 text-[#EAAA00] mb-4 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
 
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 relative z-10 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 relative z-10 leading-tight">
               {reportData.rscContent.title}
             </h2>
             
-            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10 relative z-10 mb-12 shadow-inner">
-              <p className="text-lg md:text-2xl text-slate-200 leading-relaxed font-light">
-                {reportData.rscContent.content}
+            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/10 relative z-10 shadow-inner">
+              <p className="text-base md:text-lg text-slate-200 leading-relaxed font-light">
+                {reportData.rscContent.intro}
               </p>
             </div>
-
-            <button 
-              onClick={goToCover}
-              className="bg-[#EAAA00] hover:bg-[#d49900] text-[#002855] py-4 px-10 rounded-2xl text-lg md:text-xl font-bold transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-3 relative z-10"
-            >
-              Volver a la portada
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-            </button>
           </div>
+
+          {/* Grid de Módulos */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {reportData.rscContent.modules.map((module) => (
+              <div 
+                key={module.id}
+                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 overflow-hidden hover:border-[#EAAA00] group cursor-pointer"
+                onClick={() => setActiveModuleId(module.id)}
+              >
+                <div className="h-2 bg-[#EAAA00] group-hover:bg-[#d49900] transition-all"></div>
+                <div className="p-6 md:p-8 flex flex-col gap-4">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-[#EAAA00]/10 p-3 rounded-lg flex-shrink-0">
+                      <svg className="w-6 h-6 text-[#002855]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg md:text-xl font-bold text-[#002855] mb-2 leading-tight">
+                        {module.title}
+                      </h3>
+                      <p className="text-sm md:text-base text-slate-600 font-medium">
+                        {module.description}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="border-t border-slate-200 pt-4 mt-2">
+                    <p className="text-sm text-slate-500 line-clamp-3">
+                      {module.content}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-[#EAAA00] font-semibold text-sm group-hover:translate-x-1 transition-transform">
+                    <span>Ver más detalles</span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Vista de Detalle del Módulo */}
+          {activeModuleId && (
+            <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-slate-200">
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-2xl md:text-3xl font-bold text-[#002855] flex-1">
+                  {reportData.rscContent.modules.find(m => m.id === activeModuleId)?.title}
+                </h3>
+                <button
+                  onClick={() => setActiveModuleId(null)}
+                  className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 transition-all"
+                >
+                  <svg className="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </button>
+              </div>
+
+              <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+                <p className="text-base md:text-lg text-slate-700 leading-relaxed whitespace-pre-wrap">
+                  {reportData.rscContent.modules.find(m => m.id === activeModuleId)?.content}
+                </p>
+              </div>
+
+              <div className="flex gap-4 mt-8">
+                <button
+                  onClick={() => setActiveModuleId(Math.max(1, activeModuleId - 1))}
+                  className="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-700 py-3 px-6 rounded-lg font-semibold transition-all flex items-center justify-center gap-2"
+                  disabled={activeModuleId === 1}
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
+                  Anterior
+                </button>
+                <button
+                  onClick={() => setActiveModuleId(Math.min(4, activeModuleId + 1))}
+                  className="flex-1 bg-[#EAAA00] hover:bg-[#d49900] text-[#002855] py-3 px-6 rounded-lg font-semibold transition-all flex items-center justify-center gap-2"
+                  disabled={activeModuleId === 4}
+                >
+                  Siguiente
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Botón de Regreso */}
+          <button 
+            onClick={goToCover}
+            className="bg-[#EAAA00] hover:bg-[#d49900] text-[#002855] py-4 px-10 rounded-2xl text-lg md:text-xl font-bold transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-3 self-center"
+          >
+            Volver a la portada
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+          </button>
         </div>
       </div>
     );
